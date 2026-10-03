@@ -1,0 +1,21 @@
+# NOT ACTIVE. At the cutover to chicomanda.com, copy this file to public/_redirects (README, step 4).
+# The app's paths on chicomanda.com move to Libra, same path; the query string is kept by Cloudflare Pages
+# (verify on the preview first, README).
+# The site never uses these paths. /icon-192.png stays on the site: active push subscriptions point there.
+
+/login              https://libra.chicomanda.com/login              301
+/askreset           https://libra.chicomanda.com/askreset           301
+/reset/*            https://libra.chicomanda.com/reset/:splat       301
+/invitation/*       https://libra.chicomanda.com/invitation/:splat  301
+/admin              https://libra.chicomanda.com/admin              301
+/admin/*            https://libra.chicomanda.com/admin/:splat       301
+/waiter             https://libra.chicomanda.com/waiter             301
+/waiter/*           https://libra.chicomanda.com/waiter/:splat      301
+/bartender/*        https://libra.chicomanda.com/bartender/:splat   301
+/checkout           https://libra.chicomanda.com/checkout           301
+/tables             https://libra.chicomanda.com/tables             301
+/profile            https://libra.chicomanda.com/profile            301
+/landing            https://libra.chicomanda.com/landing            301
+/api/*              https://libra.chicomanda.com/api/:splat         301
+/auth/*             https://libra.chicomanda.com/auth/:splat        301
+/socket.io/*        https://libra.chicomanda.com/socket.io/:splat   301

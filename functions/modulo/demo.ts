@@ -1,5 +1,5 @@
 /**
- * POST /api/demo: the demo / contact request. Validates, checks Turnstile, sends one e-mail through Mailjet.
+ * POST /modulo/demo: the demo / contact request. Validates, checks Turnstile, sends one e-mail through Mailjet.
  * Nothing is stored. Secrets live in the Pages project settings (README), never in the repository.
  *
  * Works without JavaScript (303 redirects to /demo/grazie or /demo/errore) and with it
