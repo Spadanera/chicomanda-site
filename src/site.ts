@@ -3,6 +3,9 @@
  * `npm run todo` lists every occurrence in the repository.
  */
 
+/** Cloudflare's Turnstile test site key: always passes, pairs with the test secret in .dev.vars.example. */
+const TURNSTILE_TEST_SITE_KEY = '1x00000000000000000000AA'
+
 export const SITE = {
     name: 'Chi Comanda',
     url: 'https://chicomanda.com',
@@ -17,10 +20,12 @@ export const SITE = {
     /** Public contact address, forwarded by Cloudflare Email Routing. */
     contactEmail: 'info@chicomanda.com',
     /**
-     * Cloudflare Turnstile site key (public). The default is Cloudflare's test key, which always passes.
-     * [[DA COMPLETARE: chiave del widget Turnstile creato per chicomanda.com, vetrina.chicomanda.com e chicomanda-site.pages.dev]]
+     * Cloudflare Turnstile site key (public), widget for chicomanda.com, vetrina.chicomanda.com and
+     * chicomanda-site.pages.dev. It doesn't work on localhost, so `astro dev` and `npm run dev:functions`
+     * use Cloudflare's test key (always passes), or PUBLIC_TURNSTILE_SITE_KEY when set.
      */
-    turnstileSiteKey: '1x00000000000000000000AA',
+    turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
+        || (import.meta.env.DEV ? TURNSTILE_TEST_SITE_KEY : '0x4AAAAAAFMv-lvsQ_zc3Mb7'),
     /** Venues' installations live at <slug>.<appDomain>. */
     appDomain: 'chicomanda.com',
 } as const

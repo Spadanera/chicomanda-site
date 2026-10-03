@@ -32,8 +32,9 @@ npm run dev:functions    # build + wrangler pages dev: sito, Function e _headers
 npm run todo             # elenca i segnaposto [[DA COMPLETARE: …]]
 ```
 
-Per `dev:functions` copia `.dev.vars.example` in `.dev.vars` (non va mai nel repo). Il secret di test di Turnstile
-nell'esempio fa sempre passare la verifica.
+Per `dev:functions` copia `.dev.vars.example` in `.dev.vars` (non va mai nel repo). In locale si usano le chiavi di
+test di Turnstile (site key in `dev`/`dev:functions`, secret nell'esempio), che fanno sempre passare la verifica:
+quelle vere funzionano solo sugli hostname del widget. Il secret vero sta solo nei secret del progetto Pages.
 
 ### Struttura
 
@@ -174,6 +175,5 @@ Due dettagli dal codice dell'app:
 
 `npm run todo` elenca i segnaposto `[[DA COMPLETARE: …]]` ancora presenti. Oggi:
 
-- site key Turnstile (oggi la chiave di test, che fa passare tutto);
 - prezzi: per ora non mostrati (né piani né "su richiesta");
 - Libra come referenza, con nome ed eventuale frase: per ora non citata.
