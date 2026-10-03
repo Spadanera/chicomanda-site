@@ -174,7 +174,6 @@ Due dettagli dal codice dell'app:
 
 `npm run todo` elenca i segnaposto `[[DA COMPLETARE: …]]` ancora presenti. Oggi:
 
-- periodo di conservazione delle richieste (privacy);
 - site key Turnstile (oggi la chiave di test, che fa passare tutto);
 - conferma dell'elenco "Per chi è" (bar e cocktail bar, discoteche e locali con tavoli, eventi privati, feste e sagre);
 - prezzi: per ora non mostrati (né piani né "su richiesta");
