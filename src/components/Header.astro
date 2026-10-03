@@ -1,0 +1,131 @@
+---
+import { NAV } from '../site'
+import Logo from './Logo.astro'
+import ThemeSwitch from './ThemeSwitch.astro'
+---
+<header class="site-header">
+    <div class="container bar">
+        <a class="brand" href="/" aria-label="Chi Comanda, pagina iniziale">
+            <Logo size={40} eager />
+            <span class="wordmark">Chi Comanda</span>
+        </a>
+
+        <nav class="nav" aria-label="Sezioni">
+            {NAV.map(item => <a href={item.href}>{item.label}</a>)}
+        </nav>
+
+        <div class="actions">
+            <a class="login" href="/accedi">Accedi</a>
+            <a class="btn btn-primary demo" href="/demo">
+                <span class="long">Richiedi una demo</span><span class="short">Demo</span>
+            </a>
+            <ThemeSwitch />
+        </div>
+    </div>
+</header>
+
+<style>
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 68px;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    .wordmark {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .nav {
+        display: none;
+        gap: 24px;
+        margin-inline: auto;
+    }
+
+    .nav a,
+    .login {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .nav a:hover,
+    .login:hover {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+    }
+
+    .nav + .actions {
+        margin-left: 0;
+    }
+
+    .login {
+        padding: 10px 4px;
+    }
+
+    .demo {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+
+    .long {
+        display: none;
+    }
+
+    @media (max-width: 420px) {
+        .wordmark {
+            display: none;
+        }
+    }
+
+    @media (min-width: 640px) {
+        .long {
+            display: inline;
+        }
+
+        .short {
+            display: none;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .nav {
+            display: flex;
+        }
+    }
+
+    @media (max-width: 959px) {
+        .actions {
+            margin-left: auto;
+        }
+    }
+</style>

@@ -1,0 +1,93 @@
+---
+import { OWNER, SITE } from '../site'
+import Logo from './Logo.astro'
+
+const year = new Date().getFullYear()
+---
+<footer class="site-footer">
+    <div class="container grid">
+        <div class="about">
+            <a class="brand" href="/">
+                <Logo size={36} />
+                <span class="wordmark">Chi Comanda</span>
+            </a>
+            <p>Le comande del tuo locale, dal tavolo al bancone.</p>
+        </div>
+
+        <nav aria-label="Link del sito">
+            <ul>
+                <li><a href="/demo">Richiedi una demo</a></li>
+                <li><a href="/accedi">Accedi al tuo locale</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container legal">
+        <p>© {year} {OWNER.name} · P.IVA {OWNER.vat}</p>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        border-top: 1px solid var(--line);
+        background: var(--surface);
+        padding-top: 40px;
+        font-size: .95rem;
+    }
+
+    .grid {
+        display: grid;
+        gap: 24px;
+    }
+
+    @media (min-width: 720px) {
+        .grid {
+            grid-template-columns: 1fr auto;
+        }
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+        text-decoration: none;
+        margin-bottom: 8px;
+    }
+
+    .wordmark {
+        font-family: var(--font-display);
+        letter-spacing: .16em;
+        text-transform: uppercase;
+    }
+
+    .about p {
+        color: var(--ink-soft);
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 6px;
+    }
+
+    a {
+        overflow-wrap: anywhere;
+    }
+
+    .legal {
+        margin-top: 32px;
+        padding-block: 16px 24px;
+        border-top: 1px solid var(--line);
+        color: var(--ink-soft);
+        font-size: .875rem;
+    }
+
+    .legal p {
+        margin: 0;
+    }
+</style>

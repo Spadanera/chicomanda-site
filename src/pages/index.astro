@@ -1,18 +1,9 @@
 ---
-import '@fontsource/federo/400.css'
-import '../styles/tokens.css'
-import Logo from '../components/Logo.astro'
-import DecoIcon from '../components/DecoIcon.astro'
+import Base from '../layouts/Base.astro'
+import { SITE } from '../site'
 ---
-<html lang="it">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Chi Comanda</title>
-    </head>
-    <body>
-        <Logo size={120} eager />
-        <h1 style="font-family: var(--font-display)">Chi Comanda</h1>
-        <DecoIcon name="mdi-glass-cocktail" />
-    </body>
-</html>
+<Base title={SITE.name} description={SITE.description}>
+    <section class="section container">
+        <h1>Chi Comanda</h1>
+    </section>
+</Base>
