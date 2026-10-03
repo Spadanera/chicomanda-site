@@ -1,0 +1,76 @@
+/*
+ * Brand tokens, from chi-comanda client/src/plugins/theme.ts (Art Déco palette):
+ * cream paper and ink in the light theme, night blue in the dark one.
+ * The theme follows prefers-color-scheme; data-theme on <html> forces one (switch in the header).
+ */
+:root {
+    color-scheme: light;
+    --bg: #EFE5D2;
+    --surface: #F8F1E3;
+    --surface-bright: #FFFBF3;
+    --surface-light: #E6D7BB;
+    --ink: #2A2522;
+    --ink-soft: #5A514A;
+    --primary: #22427A;
+    --primary-strong: #1A3361;
+    --on-primary: #FFFBF3;
+    --secondary: #2F7472;
+    --error: #B04A33;
+    --success: #2E6A5A;
+    /* Logo accents */
+    --ochre: #D29A3C;
+    --coral: #CF6F55;
+    --line: rgb(42 37 34 / .14);
+    --line-strong: rgb(42 37 34 / .32);
+    --shadow: 0 1px 2px rgb(42 37 34 / .06), 0 8px 24px rgb(42 37 34 / .08);
+
+    --font-display: 'Federo', 'Futura', 'Century Gothic', sans-serif;
+    --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --radius: 14px;
+    --gutter: 16px;
+    --max: 1120px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #0E1A33;
+        --surface: #142447;
+        --surface-bright: #1D3260;
+        --surface-light: #182C55;
+        --ink: #EFE5D2;
+        --ink-soft: #C2BBAE;
+        --primary: #8AA8DA;
+        --primary-strong: #A6BEE6;
+        --on-primary: #0E1A33;
+        --secondary: #7FC2BF;
+        --error: #E8907E;
+        --success: #5E9C8A;
+        --ochre: #E2B866;
+        --coral: #E8907E;
+        --line: rgb(239 229 210 / .14);
+        --line-strong: rgb(239 229 210 / .32);
+        --shadow: 0 1px 2px rgb(0 0 0 / .2), 0 8px 24px rgb(0 0 0 / .25);
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0E1A33;
+    --surface: #142447;
+    --surface-bright: #1D3260;
+    --surface-light: #182C55;
+    --ink: #EFE5D2;
+    --ink-soft: #C2BBAE;
+    --primary: #8AA8DA;
+    --primary-strong: #A6BEE6;
+    --on-primary: #0E1A33;
+    --secondary: #7FC2BF;
+    --error: #E8907E;
+    --success: #5E9C8A;
+    --ochre: #E2B866;
+    --coral: #E8907E;
+    --line: rgb(239 229 210 / .14);
+    --line-strong: rgb(239 229 210 / .32);
+    --shadow: 0 1px 2px rgb(0 0 0 / .2), 0 8px 24px rgb(0 0 0 / .25);
+}

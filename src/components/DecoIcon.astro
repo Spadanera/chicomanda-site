@@ -1,0 +1,34 @@
+---
+import { DECO_ICONS } from '../icons/deco'
+
+/** One icon of the app's Art Déco set, inlined at build time: thin line in the current text colour. */
+interface Props {
+    name: keyof typeof DECO_ICONS
+    size?: number
+    class?: string
+}
+
+const { name, size = 24, class: className } = Astro.props
+const body = DECO_ICONS[name]
+if (!body) throw new Error(`Unknown deco icon "${name}"`)
+---
+<svg
+    class:list={['deco-icon', className]}
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    aria-hidden="true"
+    focusable="false"
+    set:html={body}
+/>
+
+<style>
+    .deco-icon {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: none;
+    }
+</style>

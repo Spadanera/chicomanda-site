@@ -1,4 +1,8 @@
 ---
+import '@fontsource/federo/400.css'
+import '../styles/tokens.css'
+import Logo from '../components/Logo.astro'
+import DecoIcon from '../components/DecoIcon.astro'
 ---
 <html lang="it">
     <head>
@@ -7,6 +11,8 @@
         <title>Chi Comanda</title>
     </head>
     <body>
-        <h1>Chi Comanda</h1>
+        <Logo size={120} eager />
+        <h1 style="font-family: var(--font-display)">Chi Comanda</h1>
+        <DecoIcon name="mdi-glass-cocktail" />
     </body>
 </html>
