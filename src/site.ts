@@ -25,13 +25,14 @@ export const SITE = {
     appDomain: 'chicomanda.com',
 } as const
 
-/** Data controller, for the privacy policy and the footer. */
-export const OWNER = {
-    name: '[[DA COMPLETARE: ragione sociale o nome e cognome del titolare]]',
-    vat: '[[DA COMPLETARE: P.IVA]]',
-    address: '[[DA COMPLETARE: sede legale]]',
-    pec: '[[DA COMPLETARE: PEC, se presente]]',
-} as const
+/**
+ * Data controller, for the privacy policy and the footer. Today a natural person: no VAT number,
+ * registered office or PEC, which are shown only when set (e.g. once a company or a VAT number exists).
+ */
+export const OWNER: { name: string, email: string, vat?: string, address?: string, pec?: string } = {
+    name: 'Nicola Giuseppe Zirilli',
+    email: 'nicola.zirilli@gmail.com',
+}
 
 export const NAV = [
     { href: '/#funzioni', label: 'Funzioni' },

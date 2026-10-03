@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro'
 import { OWNER, SITE } from '../site'
 
 const updated = '3 ottobre 2026'
-const todo = (value: string) => value.includes('DA COMPLETARE')
 ---
 <Base
     title="Privacy"
@@ -21,11 +20,11 @@ const todo = (value: string) => value.includes('DA COMPLETARE')
 
         <h2>Titolare del trattamento</h2>
         <p>
-            <span class:list={{ todo: todo(OWNER.name) }}>{OWNER.name}</span><br />
-            P.IVA <span class:list={{ todo: todo(OWNER.vat) }}>{OWNER.vat}</span><br />
-            Sede: <span class:list={{ todo: todo(OWNER.address) }}>{OWNER.address}</span><br />
-            PEC: <span class:list={{ todo: todo(OWNER.pec) }}>{OWNER.pec}</span><br />
-            Email: <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+            {OWNER.name}<br />
+            {OWNER.vat && <>P.IVA {OWNER.vat}<br /></>}
+            {OWNER.address && <>Sede: {OWNER.address}<br /></>}
+            {OWNER.pec && <>PEC: {OWNER.pec}<br /></>}
+            Email: <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>
         </p>
 
         <h2>Richieste di demo e di contatto</h2>

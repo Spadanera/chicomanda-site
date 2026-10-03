@@ -24,7 +24,7 @@ const year = new Date().getFullYear()
         </nav>
     </div>
     <div class="container legal">
-        <p>© {year} {OWNER.name} · P.IVA {OWNER.vat}</p>
+        <p>© {year} {OWNER.name}{OWNER.vat && ` · P.IVA ${OWNER.vat}`}</p>
     </div>
 </footer>
 
