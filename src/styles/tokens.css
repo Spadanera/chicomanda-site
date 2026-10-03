@@ -24,11 +24,16 @@
     --coral: #CF6F55;
     --line: rgb(42 37 34 / .14);
     --line-strong: rgb(42 37 34 / .32);
-    --shadow: 0 1px 2px rgb(42 37 34 / .06), 0 8px 24px rgb(42 37 34 / .08);
+    --shadow: var(--elevation-2);
 
+    /* Federo only for the wordmark, as in the app; everything else uses Vuetify's own stack, like the app */
     --font-display: 'Federo', 'Futura', 'Century Gothic', sans-serif;
-    --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --radius: 14px;
+    --font-body: 'Roboto', sans-serif;
+    /* Vuetify's default radius and elevations (v-card, v-btn) */
+    --radius: 4px;
+    --elevation-1: 0 2px 1px -1px rgb(0 0 0 / .2), 0 1px 1px 0 rgb(0 0 0 / .14), 0 1px 3px 0 rgb(0 0 0 / .12);
+    --elevation-2: 0 3px 1px -2px rgb(0 0 0 / .2), 0 2px 2px 0 rgb(0 0 0 / .14), 0 1px 5px 0 rgb(0 0 0 / .12);
+    --elevation-4: 0 2px 4px -1px rgb(0 0 0 / .2), 0 4px 5px 0 rgb(0 0 0 / .14), 0 1px 10px 0 rgb(0 0 0 / .12);
     --gutter: 16px;
     --max: 1120px;
 }
@@ -53,7 +58,7 @@
         --coral: #E8907E;
         --line: rgb(239 229 210 / .14);
         --line-strong: rgb(239 229 210 / .32);
-        --shadow: 0 1px 2px rgb(0 0 0 / .2), 0 8px 24px rgb(0 0 0 / .25);
+        --shadow: var(--elevation-2);
     }
 }
 
@@ -76,5 +81,5 @@
     --coral: #E8907E;
     --line: rgb(239 229 210 / .14);
     --line-strong: rgb(239 229 210 / .32);
-    --shadow: 0 1px 2px rgb(0 0 0 / .2), 0 8px 24px rgb(0 0 0 / .25);
+    --shadow: var(--elevation-2);
 }

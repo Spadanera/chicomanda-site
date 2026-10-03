@@ -41,6 +41,7 @@ real keys only work on the widget's hostnames. The real secret lives only in the
 ```
 src/site.ts                  settings: indexable, e-mail, Turnstile site key, data controller
 src/styles/tokens.css        theme colours (from the app's theme.ts), light and dark
+src/styles/fields.css        Material form controls (as Vuetify's), used by /demo and /accedi
 src/icons/deco.ts            Art Déco icons, copied from the app
 src/assets/logo/             maître logos, light and dark, copied from the app
 shared/demo-form.ts          form validation (used by the Function)
@@ -61,8 +62,14 @@ cutover/_redirects           redirects for the domain cutover, NOT active
 
 ## Choices
 
-- **Fonts**: Federo self-hosted from `@fontsource/federo` for headings and wordmark, system fonts for body text. No
-  requests to Google Fonts.
+- **Same look as the app**: moving from the site to a venue's app must not feel like changing site.
+  - Fonts: the app's own stack, Vuetify's `"Roboto", sans-serif` (the app doesn't load Roboto, so Android shows Roboto,
+    Apple devices Helvetica, Windows Arial: the site does the same). Federo, self-hosted from `@fontsource/federo`,
+    only for the wordmark, as in the app. No requests to Google Fonts. If the app ever self-hosts Roboto
+    (`@fontsource/roboto`), do the same here.
+  - Form fields, checkbox and radio: Material Design as Vuetify 3 draws them (`v-text-field` "filled" variant, floating
+    label, suffix, messages), in `src/styles/fields.css`.
+  - Buttons and cards: `v-btn` (uppercase, 4px radius, elevated / outlined) and `v-card` (4px, elevation 1).
 - **Theme**: follows `prefers-color-scheme`; the header button forces it and remembers it in `localStorage`.
 - **No cookies**: analytics with Cloudflare Web Analytics (cookieless), hence no banner. `localStorage` holds only the
   theme and the last venue of `/accedi`, both declared in the privacy policy.
