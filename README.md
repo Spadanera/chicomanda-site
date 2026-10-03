@@ -87,7 +87,7 @@ Secret del progetto Pages (*Settings → Variables and Secrets*, ambiente Produc
 | `TURNSTILE_SECRET` | secret key del widget Turnstile |
 | `MAILJET_API_KEY`, `MAILJET_API_SECRET` | chiavi API di Mailjet (le stesse dell'app vanno bene, meglio una sotto-chiave dedicata) |
 | `MAIL_FROM` | mittente su un dominio autenticato in Mailjet, es. `sito@chicomanda.com` |
-| `DEMO_TO` | indirizzo che riceve le richieste |
+| `DEMO_TO` | indirizzo che riceve le richieste: `info@chicomanda.com` |
 
 Se ne manca uno la Function risponde con errore e la pagina propone il link email.
 
@@ -174,7 +174,6 @@ Due dettagli dal codice dell'app:
 
 `npm run todo` elenca i segnaposto `[[DA COMPLETARE: …]]` ancora presenti. Oggi:
 
-- l'indirizzo che riceve le richieste demo (`DEMO_TO`, secret di Pages);
 - periodo di conservazione delle richieste (privacy);
 - site key Turnstile (oggi la chiave di test, che fa passare tutto);
 - conferma dell'elenco "Per chi è" (bar e cocktail bar, discoteche e locali con tavoli, eventi privati, feste e sagre);
