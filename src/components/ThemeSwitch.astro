@@ -43,25 +43,25 @@ import DecoIcon from './DecoIcon.astro'
         border-color: var(--ink);
     }
 
-    .when-dark {
+    .theme-switch :global(.when-dark) {
         display: none;
     }
 
     @media (prefers-color-scheme: dark) {
-        :global(:root:not([data-theme="light"])) .when-light {
+        :global(:root:not([data-theme="light"])) .theme-switch :global(.when-light) {
             display: none;
         }
 
-        :global(:root:not([data-theme="light"])) .when-dark {
+        :global(:root:not([data-theme="light"])) .theme-switch :global(.when-dark) {
             display: block;
         }
     }
 
-    :global(:root[data-theme="dark"]) .when-light {
+    :global(:root[data-theme="dark"]) .theme-switch :global(.when-light) {
         display: none;
     }
 
-    :global(:root[data-theme="dark"]) .when-dark {
+    :global(:root[data-theme="dark"]) .theme-switch :global(.when-dark) {
         display: block;
     }
 </style>

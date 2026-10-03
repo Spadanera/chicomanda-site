@@ -61,7 +61,8 @@ import ThemeSwitch from './ThemeSwitch.astro'
     .nav {
         display: none;
         gap: 24px;
-        margin-inline: auto;
+        margin-left: auto;
+        margin-right: 8px;
     }
 
     .nav a,
@@ -82,10 +83,6 @@ import ThemeSwitch from './ThemeSwitch.astro'
         align-items: center;
         gap: 12px;
         margin-left: auto;
-    }
-
-    .nav + .actions {
-        margin-left: 0;
     }
 
     .login {
@@ -121,11 +118,9 @@ import ThemeSwitch from './ThemeSwitch.astro'
         .nav {
             display: flex;
         }
-    }
 
-    @media (max-width: 959px) {
         .actions {
-            margin-left: auto;
+            margin-left: 0;
         }
     }
 </style>
