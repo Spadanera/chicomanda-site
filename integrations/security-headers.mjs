@@ -74,9 +74,11 @@ export default function securityHeaders() {
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
-# The pages.dev addresses (production and preview deployments) are never indexed,
-# also after the cutover to chicomanda.com.
+# The pages.dev addresses (production and preview deployments) and the public preview
+# vetrina.chicomanda.com are never indexed, also after the cutover to chicomanda.com.
 https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://vetrina.chicomanda.com/*
   X-Robots-Tag: noindex
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex

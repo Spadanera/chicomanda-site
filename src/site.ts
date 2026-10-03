@@ -10,15 +10,15 @@ export const SITE = {
     description:
         'Chi Comanda è l’app per gestire le comande di bar, cocktail bar e locali con tavoli: ordini dal telefono, bar e cucina, cassa e mappa dei tavoli in tempo reale.',
     /**
-     * false while the site lives on the pages.dev preview: every page gets noindex.
+     * false while the site lives on the previews (pages.dev, vetrina.chicomanda.com): every page gets noindex.
      * Set to true only at the cutover to chicomanda.com (README, "Passaggio a chicomanda.com").
      */
     indexable: false,
-    /** [[DA COMPLETARE: confermare l'indirizzo pubblico di contatto e che sia instradato con Email Routing]] */
+    /** Public contact address, forwarded by Cloudflare Email Routing. */
     contactEmail: 'info@chicomanda.com',
     /**
      * Cloudflare Turnstile site key (public). The default is Cloudflare's test key, which always passes.
-     * [[DA COMPLETARE: chiave del widget Turnstile creato per chicomanda.com e chicomanda-site.pages.dev]]
+     * [[DA COMPLETARE: chiave del widget Turnstile creato per chicomanda.com, vetrina.chicomanda.com e chicomanda-site.pages.dev]]
      */
     turnstileSiteKey: '1x00000000000000000000AA',
     /** Venues' installations live at <slug>.<appDomain>. */

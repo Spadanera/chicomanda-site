@@ -26,7 +26,7 @@ test('validates like scripts/lib/slug.mjs', () => {
     assert.equal(slugProblem('a'.repeat(31)), 'invalid')
     assert.equal(slugProblem('a'.repeat(30)), null)
     assert.equal(slugProblem('-ab'), 'invalid')
-    for (const reserved of ['www', 'mail', 'api', 'app', 'admin', 'staging', 'stage', 'status']) {
+    for (const reserved of ['www', 'mail', 'api', 'app', 'admin', 'staging', 'stage', 'status', 'vetrina']) {
         assert.equal(slugProblem(reserved), 'reserved')
     }
 })

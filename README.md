@@ -127,10 +127,23 @@ npx wrangler pages deploy dist --project-name chicomanda-site --branch main
 Dopo il primo deploy:
 
 1. **Secret** del modulo (tabella sopra).
-2. **Turnstile**: Cloudflare → *Turnstile* → *Add widget*, hostname `chicomanda-site.pages.dev` e `chicomanda.com`,
+2. **Turnstile**: Cloudflare → *Turnstile* → *Add widget*, hostname `chicomanda-site.pages.dev`,
+   `vetrina.chicomanda.com` e `chicomanda.com`,
    modalità *Managed*. La site key va in `SITE.turnstileSiteKey` (`src/site.ts`), la secret key in `TURNSTILE_SECRET`.
 3. **Web Analytics**: progetto Pages → *Metrics* → *Web Analytics* → *Enable*.
 4. **Prova**: una richiesta demo vera, che arrivi a `DEMO_TO` e che rispondendo si risponda a chi l'ha inviata.
+
+## Anteprima pubblica su vetrina.chicomanda.com
+
+Finché `chicomanda.com` serve l'app di Libra, il sito è pubblicato anche su `vetrina.chicomanda.com`: progetto Pages
+→ *Custom domains* → *Set up a custom domain* → `vetrina.chicomanda.com`. Cloudflare crea un solo record, il CNAME
+`vetrina` → `chicomanda-site.pages.dev`, e il certificato. Non tocca apex, `www`, MX, TXT o i record di Mailjet.
+
+- `vetrina` è tra gli slug riservati di `/accedi` (`shared/slug.ts`): va aggiunto anche a `RESERVED_SLUGS` in
+  `scripts/lib/slug.mjs` dell'app, perché `new-client` non crei un locale con quel nome.
+- L'indirizzo ha sempre `X-Robots-Tag: noindex` (in `_headers`), anche dopo il passaggio.
+- Dopo il passaggio a `chicomanda.com`: una *Redirect Rule* 301 da `vetrina.chicomanda.com/*` a
+  `https://chicomanda.com/${1}`, oppure rimuovere il custom domain e il CNAME.
 
 ## Passaggio a chicomanda.com (pianificato, da fare solo quando deciso)
 
@@ -161,9 +174,7 @@ Due dettagli dal codice dell'app:
 
 `npm run todo` elenca i segnaposto `[[DA COMPLETARE: …]]` ancora presenti. Oggi:
 
-- titolare del trattamento: ragione sociale o nome, P.IVA, sede, PEC (`src/site.ts`, compare in privacy e footer);
-- email pubblica di contatto (provvisoria `info@chicomanda.com`): è instradata con Email Routing? E l'indirizzo
-  `DEMO_TO`;
+- l'indirizzo che riceve le richieste demo (`DEMO_TO`, secret di Pages);
 - periodo di conservazione delle richieste (privacy);
 - site key Turnstile (oggi la chiave di test, che fa passare tutto);
 - conferma dell'elenco "Per chi è" (bar e cocktail bar, discoteche e locali con tavoli, eventi privati, feste e sagre);

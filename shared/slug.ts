@@ -3,8 +3,8 @@
  * The rules are those of chi-comanda scripts/lib/slug.mjs: keep them in sync.
  */
 
-/** Subdomains that are not clients: product, infrastructure and Railway environments. */
-export const RESERVED_SLUGS = ['www', 'mail', 'api', 'app', 'admin', 'staging', 'stage', 'status']
+/** Subdomains that are not clients: product, infrastructure, Railway environments and this site's preview (vetrina). */
+export const RESERVED_SLUGS = ['www', 'mail', 'api', 'app', 'admin', 'staging', 'stage', 'status', 'vetrina']
 
 /** Lowercase letters, digits and hyphens, 2-30 characters, no leading or trailing hyphen. */
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,28}[a-z0-9])$/
