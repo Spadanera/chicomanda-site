@@ -1,123 +1,123 @@
-# Chi Comanda: sito vetrina
+# Chi Comanda: showcase site
 
-Il sito pubblico di Chi Comanda: oggi in anteprima su `chicomanda-site.pages.dev`, domani su `chicomanda.com`.
-È statico ([Astro](https://astro.build), senza framework lato client). Solo il modulo demo ha un piccolo backend: una
-Cloudflare Pages Function.
+The public site of Chi Comanda: today on the previews `chicomanda-site.pages.dev` and `vetrina.chicomanda.com`, later
+on `chicomanda.com`. It is static ([Astro](https://astro.build), no client-side framework); only the demo form has a
+small backend, a Cloudflare Pages Function. The site's copy is in Italian.
 
-| Percorso | Contenuto |
+| Path | Content |
 |---|---|
-| `/` | Hero, funzioni, come funziona, ruoli, per chi è, invito alla demo |
-| `/demo` | Modulo per la demo o per un contatto, con il link email come alternativa |
-| `/demo/grazie`, `/demo/errore` | Esito dell'invio, funzionano anche senza JavaScript |
-| `/accedi` | Accesso all'app del proprio locale (`<slug>.chicomanda.com/login`) |
-| `/privacy` | Informativa privacy |
-| `404` | Pagina d'errore |
-| `POST /modulo/demo` | Pages Function del modulo (`functions/modulo/demo.ts`) |
+| `/` | Hero, features, how it works, roles, who it is for, call to request a demo |
+| `/demo` | Demo/contact form, with an e-mail link as fallback |
+| `/demo/grazie`, `/demo/errore` | Outcome of the form, also without JavaScript |
+| `/accedi` | Sign-in: sends the user to their venue's app (`<slug>.chicomanda.com/login`) |
+| `/privacy` | Privacy policy |
+| `404` | Error page |
+| `POST /modulo/demo` | Pages Function of the form (`functions/modulo/demo.ts`) |
 
-Il sito **non usa mai i percorsi dell'app** (`/login`, `/api`, `/auth`, `/admin`, `/waiter`, `/bartender`,
-`/checkout`, `/tables`, `/profile`, `/invitation`, `/reset`, `/askreset`, `/landing`, `/socket.io`): al passaggio
-di dominio diventano redirect verso Libra.
+The site **never uses the app's paths** (`/login`, `/api`, `/auth`, `/admin`, `/waiter`, `/bartender`, `/checkout`,
+`/tables`, `/profile`, `/invitation`, `/reset`, `/askreset`, `/landing`, `/socket.io`): at the domain cutover they
+become redirects to Libra.
 
-## Sviluppo
+## Development
 
 Node 22 (`.nvmrc`).
 
 ```bash
 npm install
-npm run dev              # http://localhost:4321, senza la Function
-npm run check            # astro check + typecheck della Function
-npm test                 # regole del modulo e degli slug
-npm run build            # dist/, con sitemap e _headers generati
-npm run dev:functions    # build + wrangler pages dev: sito, Function e _headers come in produzione
-npm run todo             # elenca i segnaposto [[DA COMPLETARE: …]]
+npm run dev              # http://localhost:4321 (or --port), without the Function
+npm run check            # astro check + typecheck of the Function
+npm test                 # form and slug rules
+npm run build            # dist/, with generated sitemap and _headers
+npm run dev:functions    # build + wrangler pages dev: site, Function and _headers as in production
+npm run todo             # lists the [[DA COMPLETARE: …]] placeholders
 ```
 
-Per `dev:functions` copia `.dev.vars.example` in `.dev.vars` (non va mai nel repo). In locale si usano le chiavi di
-test di Turnstile (site key in `dev`/`dev:functions`, secret nell'esempio), che fanno sempre passare la verifica:
-quelle vere funzionano solo sugli hostname del widget. Il secret vero sta solo nei secret del progetto Pages.
+For `dev:functions` copy `.dev.vars.example` to `.dev.vars` (never commit it). Locally the site uses Cloudflare's
+Turnstile **test keys** (the site key in `dev`/`dev:functions`, the secret in the example), which always pass: the
+real keys only work on the widget's hostnames. The real secret lives only in the Pages project's secrets.
 
-### Struttura
+### Layout
 
 ```
-src/site.ts                  impostazioni: indexable, email, chiave Turnstile, dati del titolare
-src/styles/tokens.css        colori del tema (da theme.ts dell'app), chiaro e scuro
-src/icons/deco.ts            icone Art Déco, copiate dall'app
-src/assets/logo/             loghi maître chiaro e scuro, copiati dall'app
-shared/demo-form.ts          validazione del modulo (usata dalla Function)
-shared/slug.ts               normalizzazione e regole degli slug (come scripts/lib/slug.mjs dell'app)
-functions/modulo/demo.ts     Pages Function del modulo
-integrations/security-headers.mjs   scrive dist/_headers (CSP con gli hash degli script inline)
-scripts/og-image.mjs         rigenera public/og.png (1200×630)
-cutover/_redirects           redirect per il passaggio di dominio, NON attivi
+src/site.ts                  settings: indexable, e-mail, Turnstile site key, data controller
+src/styles/tokens.css        theme colours (from the app's theme.ts), light and dark
+src/icons/deco.ts            Art Déco icons, copied from the app
+src/assets/logo/             maître logos, light and dark, copied from the app
+shared/demo-form.ts          form validation (used by the Function)
+shared/slug.ts               slug normalisation and rules (as the app's scripts/lib/slug.mjs)
+functions/modulo/demo.ts     Pages Function of the form
+integrations/security-headers.mjs   writes dist/_headers (CSP with the hashes of the inline scripts)
+scripts/og-image.mjs         regenerates public/og.png (1200×630)
+cutover/_redirects           redirects for the domain cutover, NOT active
 ```
 
-### Da tenere allineato con l'app (`chi-comanda`)
+### Keep in sync with the app (`chi-comanda`)
 
-- `src/icons/deco.ts` è una copia di `client/src/icons/deco.ts`;
-- `src/styles/tokens.css` riprende i colori di `client/src/plugins/theme.ts`;
-- `shared/slug.ts` ripete le regole e i nomi riservati di `scripts/lib/slug.mjs`;
-- loghi e icone (`favicon.*`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) vengono da `client/public` e
+- `src/icons/deco.ts` is a copy of `client/src/icons/deco.ts`;
+- `src/styles/tokens.css` follows the colours of `client/src/plugins/theme.ts`;
+- `shared/slug.ts` repeats the rules and reserved names of `scripts/lib/slug.mjs` (plus `vetrina`, see below);
+- logos and icons (`favicon.*`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) come from `client/public` and
   `client/src/assets/logo`.
 
-## Scelte
+## Choices
 
-- **Font**: Federo self-hosted da `@fontsource/federo` per titoli e wordmark, font di sistema per il testo. Nessuna
-  richiesta a Google Fonts.
-- **Tema**: segue `prefers-color-scheme`; il pulsante nell'header lo forza e lo ricorda in `localStorage`.
-- **Niente cookie**: statistiche con Cloudflare Web Analytics (senza cookie), quindi nessun banner. In
-  `localStorage` restano solo il tema e l'ultimo locale di `/accedi`, dichiarati nella privacy.
-- **Funzioni non promesse**: scontrino fiscale o registratore telematico (non c'è nel codice), uso offline (il
-  service worker non ha cache), la versione "premium" dei cocktail.
-- **noindex**: finché `SITE.indexable` in `src/site.ts` è `false` ogni pagina ha `noindex`. Gli indirizzi `*.pages.dev`
-  hanno sempre `X-Robots-Tag: noindex` (in `_headers`), anche dopo il passaggio.
-- **CSP**: `dist/_headers` è generato a ogni build: gli script inline sono ammessi solo tramite il loro hash sha256.
-  Se aggiungi uno script esterno, aggiungilo in `integrations/security-headers.mjs`.
+- **Fonts**: Federo self-hosted from `@fontsource/federo` for headings and wordmark, system fonts for body text. No
+  requests to Google Fonts.
+- **Theme**: follows `prefers-color-scheme`; the header button forces it and remembers it in `localStorage`.
+- **No cookies**: analytics with Cloudflare Web Analytics (cookieless), hence no banner. `localStorage` holds only the
+  theme and the last venue of `/accedi`, both declared in the privacy policy.
+- **Features not promised**: fiscal receipts / telematic cash register (not in the code), offline use (the service
+  worker has no cache), the "premium" cocktail version.
+- **noindex**: while `SITE.indexable` in `src/site.ts` is `false`, every page has `noindex`. The `*.pages.dev` addresses
+  and `vetrina.chicomanda.com` always get `X-Robots-Tag: noindex` (in `_headers`), also after the cutover.
+- **CSP**: `dist/_headers` is generated by every build: inline scripts are allowed only by their sha256 hash. An
+  external script must be added in `integrations/security-headers.mjs`.
 
-### Il modulo demo
+### Demo form
 
-`POST /modulo/demo` valida i campi (nome, locale, email, telefono facoltativo, messaggio, consenso), scarta in
-silenzio gli invii che compilano il campo trappola, verifica Turnstile e invia **una email in testo semplice** con
-Mailjet, con `Reply-To` impostato su chi ha scritto. Non salva niente. Senza JavaScript il browser segue un redirect
-303 a `/demo/grazie` o `/demo/errore`; con JavaScript l'esito compare nella pagina e, in caso di errore, c'è un link
-`mailto:` con il messaggio già pronto.
+`POST /modulo/demo` validates the fields (name, venue, e-mail, optional phone, message, consent), silently drops
+submissions that fill the honeypot field, verifies Turnstile and sends **one plain-text e-mail** through Mailjet, with
+`Reply-To` set to the sender. Nothing is stored. Without JavaScript the browser follows a 303 redirect to `/demo/grazie`
+or `/demo/errore`; with JavaScript the outcome is shown in the page and, on error, a `mailto:` link with the message
+ready to send.
 
-Secret del progetto Pages (*Settings → Variables and Secrets*, ambiente Production e Preview):
+Secrets of the Pages project (*Settings → Variables and Secrets*, Production and Preview):
 
-| Nome | Valore |
+| Name | Value |
 |---|---|
-| `TURNSTILE_SECRET` | secret key del widget Turnstile |
-| `MAILJET_API_KEY`, `MAILJET_API_SECRET` | chiavi API di Mailjet (le stesse dell'app vanno bene, meglio una sotto-chiave dedicata) |
-| `MAIL_FROM` | mittente su un dominio autenticato in Mailjet, es. `sito@chicomanda.com` |
-| `DEMO_TO` | indirizzo che riceve le richieste: `info@chicomanda.com` |
+| `TURNSTILE_SECRET` | secret key of the Turnstile widget |
+| `MAILJET_API_KEY`, `MAILJET_API_SECRET` | Mailjet API keys (the app's keys work; a dedicated sub-key is better) |
+| `MAIL_FROM` | sender on a domain authenticated in Mailjet, e.g. `sito@chicomanda.com` |
+| `DEMO_TO` | address receiving the requests: `info@chicomanda.com` |
 
-Se ne manca uno la Function risponde con errore e la pagina propone il link email.
+If one is missing the Function answers with an error and the page offers the e-mail link.
 
-### Accedi
+### Sign-in (`/accedi`)
 
-`/accedi` normalizza il nome scritto ("Bagno Al Mare" → `bagno-al-mare`, accetta anche
-`libra.chicomanda.com/login`), lo valida con le regole dell'app e, prima del redirect, fa una richiesta `no-cors` a
-`https://<slug>.chicomanda.com/api/health` con un timeout di 6 secondi: se il sottodominio non esiste la pagina
-dice "Locale non trovato" invece di mostrare l'errore DNS del browser. Nessun elenco di clienti viene pubblicato.
-Questo funziona finché sulla zona `chicomanda.com` **non c'è un record DNS jolly** (`*`). Link diretti:
-`/accedi?locale=libra`.
+`/accedi` normalises the typed name ("Bagno Al Mare" → `bagno-al-mare`; `libra.chicomanda.com/login` is accepted too),
+validates it with the app's rules and, before redirecting, makes a `no-cors` request to
+`https://<slug>.chicomanda.com/api/health` with a 6-second timeout: if the subdomain doesn't exist the page says
+"Locale non trovato" instead of showing the browser's DNS error. No list of clients is published. This works as long
+as the `chicomanda.com` zone has **no wildcard DNS record** (`*`). Direct links: `/accedi?locale=libra`.
 
-## Pubblicazione su Cloudflare Pages
+## Publishing on Cloudflare Pages
 
-Il progetto si chiama `chicomanda-site`, quindi l'anteprima è `https://chicomanda-site.pages.dev`. Non serve nessun
-record DNS e `chicomanda.com` resta com'è.
+The project is named `chicomanda-site`, so its address is `https://chicomanda-site.pages.dev`. No DNS record is needed
+and `chicomanda.com` is left as it is.
 
-**Con il repo GitHub** (consigliato): Cloudflare → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* →
-`Spadanera/chicomanda-site`.
+**From the GitHub repository** (recommended): Cloudflare → *Workers & Pages* → *Create*. The page offers a **Worker**
+by default (with "Deploy command" and "Preview command"): use the *Pages* link at the bottom instead ("Looking to
+deploy Pages?") → *Import an existing Git repository* → `Spadanera/chicomanda-site`.
 
 - Production branch: `main`
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Variabile `NODE_VERSION` = `22`
+- Environment variable `NODE_VERSION` = `22`
 
-La cartella `functions/` viene presa in automatico. Ogni altro branch ottiene un'anteprima
+The `functions/` folder is picked up automatically. Every push to `main` deploys; any other branch gets a preview at
 `<branch>.chicomanda-site.pages.dev`.
 
-**Oppure a mano** dalla tua macchina:
+**Or by hand** from your machine:
 
 ```bash
 npx wrangler login
@@ -125,55 +125,57 @@ npm run build
 npx wrangler pages deploy dist --project-name chicomanda-site --branch main
 ```
 
-Dopo il primo deploy:
+After the first deploy:
 
-1. **Secret** del modulo (tabella sopra).
-2. **Turnstile**: Cloudflare → *Turnstile* → *Add widget*, hostname `chicomanda-site.pages.dev`,
-   `vetrina.chicomanda.com` e `chicomanda.com`,
-   modalità *Managed*. La site key va in `SITE.turnstileSiteKey` (`src/site.ts`), la secret key in `TURNSTILE_SECRET`.
-3. **Web Analytics**: progetto Pages → *Metrics* → *Web Analytics* → *Enable*.
-4. **Prova**: una richiesta demo vera, che arrivi a `DEMO_TO` e che rispondendo si risponda a chi l'ha inviata.
+1. **Secrets** of the form (table above).
+2. **Turnstile**: Cloudflare → *Turnstile* → widget `chicomanda-site`, *Managed* mode, hostnames
+   `chicomanda-site.pages.dev`, `vetrina.chicomanda.com` and `chicomanda.com`. The site key is in
+   `SITE.turnstileSiteKey` (`src/site.ts`), the secret key in `TURNSTILE_SECRET`.
+3. **Web Analytics**: Pages project → *Metrics* → *Web Analytics* → *Enable*.
+4. **Test**: a real demo request, which must reach `DEMO_TO`; replying to it must reply to the sender.
 
-## Anteprima pubblica su vetrina.chicomanda.com
+## Public preview on vetrina.chicomanda.com
 
-Finché `chicomanda.com` serve l'app di Libra, il sito è pubblicato anche su `vetrina.chicomanda.com`: progetto Pages
-→ *Custom domains* → *Set up a custom domain* → `vetrina.chicomanda.com`. Cloudflare crea un solo record, il CNAME
-`vetrina` → `chicomanda-site.pages.dev`, e il certificato. Non tocca apex, `www`, MX, TXT o i record di Mailjet.
+While `chicomanda.com` serves Libra's app, the site is also published on `vetrina.chicomanda.com`: Pages project →
+*Custom domains* → *Set up a custom domain* → `vetrina.chicomanda.com`. Cloudflare creates a single record, the CNAME
+`vetrina` → `chicomanda-site.pages.dev`, and the certificate. It doesn't touch the apex, `www`, MX, TXT or Mailjet's
+records.
 
-- `vetrina` è tra gli slug riservati di `/accedi` (`shared/slug.ts`): va aggiunto anche a `RESERVED_SLUGS` in
-  `scripts/lib/slug.mjs` dell'app, perché `new-client` non crei un locale con quel nome.
-- L'indirizzo ha sempre `X-Robots-Tag: noindex` (in `_headers`), anche dopo il passaggio.
-- Dopo il passaggio a `chicomanda.com`: una *Redirect Rule* 301 da `vetrina.chicomanda.com/*` a
-  `https://chicomanda.com/${1}`, oppure rimuovere il custom domain e il CNAME.
+- `vetrina` is a reserved slug in `/accedi` (`shared/slug.ts`): add it to `RESERVED_SLUGS` in the app's
+  `scripts/lib/slug.mjs` too, so `new-client` never creates a venue with that name.
+- The address always has `X-Robots-Tag: noindex` (in `_headers`), also after the cutover.
+- After the cutover to `chicomanda.com`: a 301 *Redirect Rule* from `vetrina.chicomanda.com/*` to
+  `https://chicomanda.com/${1}`, or remove the custom domain and its CNAME.
 
-## Passaggio a chicomanda.com (pianificato, da fare solo quando deciso)
+## Cutover to chicomanda.com (planned, only when decided)
 
-Il passaggio tocca solo i record di `chicomanda.com` e `www`, mai MX, TXT, SPF, DKIM o i record di Mailjet.
+The cutover touches only the `chicomanda.com` (apex) and `www` records, never MX, TXT, SPF, DKIM or Mailjet's records.
 
-1. **Libra sul suo sottodominio**: seguire *Moving a client to another domain* in `DEPLOY.md` dell'app, fino a quando
-   `https://libra.chicomanda.com/api/health` risponde e lo staff usa il nuovo indirizzo.
-2. **Verificare i redirect sull'anteprima**: copiare `cutover/_redirects` in `public/_redirects` su un branch, fare il
-   deploy di anteprima e controllare che il percorso e la **query** restino uguali, per esempio
-   `curl -sI 'https://<branch>.chicomanda-site.pages.dev/reset/abc?x=1'` deve dare `301` con
-   `location: https://libra.chicomanda.com/reset/abc?x=1`. E che `POST /modulo/demo` funzioni ancora.
-3. **Custom domain**: nel progetto Pages → *Custom domains* → aggiungere `chicomanda.com` e `www.chicomanda.com`
-   (Cloudflare sostituisce i record apex/`www` che oggi puntano all'app su Railway). Con `public/_redirects` già in
-   produzione, così i vecchi link dell'app vengono rediretti da subito. `www` → apex con una *Redirect Rule* o
-   un *Bulk Redirect*.
-4. **Indicizzazione**: `indexable: true` in `src/site.ts`, deploy, poi la sitemap
-   `https://chicomanda.com/sitemap-index.xml` su Google Search Console.
-5. Rimuovere `chicomanda.com` dai domini del servizio Railway di Libra solo dopo che i redirect funzionano.
+1. **Libra on its subdomain**: follow *Moving a client to another domain* in the app's `DEPLOY.md`, until
+   `https://libra.chicomanda.com/api/health` answers and the staff uses the new address.
+2. **Check the redirects on a preview**: copy `cutover/_redirects` to `public/_redirects` on a branch, deploy the
+   preview and check that path and **query** are kept, e.g.
+   `curl -sI 'https://<branch>.chicomanda-site.pages.dev/reset/abc?x=1'` must give `301` with
+   `location: https://libra.chicomanda.com/reset/abc?x=1`, and that `POST /modulo/demo` still works.
+3. **Custom domain**: merge the branch so `public/_redirects` is in production, then in the Pages project → *Custom
+   domains* → add `chicomanda.com` and `www.chicomanda.com` (Cloudflare replaces the apex/`www` records that point to
+   the app on Railway today). The app's old links are redirected right away. `www` → apex with a *Redirect Rule* or a
+   *Bulk Redirect*.
+4. **Indexing**: `indexable: true` in `src/site.ts`, deploy, then submit `https://chicomanda.com/sitemap-index.xml` to
+   Google Search Console.
+5. Remove `chicomanda.com` from the domains of Libra's Railway service only once the redirects work.
+6. `vetrina.chicomanda.com`: redirect or remove it (see above).
 
-Due dettagli dal codice dell'app:
+Two details from the app's code:
 
-- `/askreset` manca dall'elenco dei percorsi da redirigere in `DEPLOY.md` (punto 5 di *Moving a client*); qui c'è, e ci
-  sono anche `/auth`, `/socket.io` e `/landing`;
-- il sito tiene **`/icon-192.png` allo stesso percorso**: le notifiche push già attive su `chicomanda.com` la usano come
-  icona.
+- `/askreset` is missing from the list of paths to redirect in `DEPLOY.md` (step 5 of *Moving a client*); it is here,
+  together with `/auth`, `/socket.io` and `/landing`;
+- the site keeps **`/icon-192.png` at the same path**: the push subscriptions already active on `chicomanda.com` use
+  it as their icon.
 
-## Da completare
+## Still open
 
-`npm run todo` elenca i segnaposto `[[DA COMPLETARE: …]]` ancora presenti. Oggi:
+`npm run todo` lists the `[[DA COMPLETARE: …]]` placeholders still in the code (none today). Open choices:
 
-- prezzi: per ora non mostrati (né piani né "su richiesta");
-- Libra come referenza, con nome ed eventuale frase: per ora non citata.
+- prices: not shown for now (neither plans nor "on request");
+- Libra as a reference, with name and maybe a quote: not mentioned for now.

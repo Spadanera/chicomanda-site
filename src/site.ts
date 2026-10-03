@@ -14,7 +14,7 @@ export const SITE = {
         'Chi Comanda è l’app per gestire le comande di bar, cocktail bar e locali con tavoli: ordini dal telefono, bar e cucina, cassa e mappa dei tavoli in tempo reale.',
     /**
      * false while the site lives on the previews (pages.dev, vetrina.chicomanda.com): every page gets noindex.
-     * Set to true only at the cutover to chicomanda.com (README, "Passaggio a chicomanda.com").
+     * Set to true only at the cutover to chicomanda.com (README, "Cutover to chicomanda.com").
      */
     indexable: false,
     /** Public contact address, forwarded by Cloudflare Email Routing. */

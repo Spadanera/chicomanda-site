@@ -1,4 +1,4 @@
-# NOT ACTIVE. At the cutover to chicomanda.com, copy this file to public/_redirects (README, step 4).
+# NOT ACTIVE. At the cutover to chicomanda.com, copy this file to public/_redirects (README, "Cutover to chicomanda.com", step 2).
 # The app's paths on chicomanda.com move to Libra, same path; the query string is kept by Cloudflare Pages
 # (verify on the preview first, README).
 # The site never uses these paths. /icon-192.png stays on the site: active push subscriptions point there.
