@@ -1,0 +1,258 @@
+/*
+ * Material Design form controls, as Vuetify 3 draws them in the app (v-text-field / v-textarea with the default
+ * "filled" variant, v-checkbox, v-radio), in the site's colours. Pure CSS: the label floats with
+ * :placeholder-shown, so every text input needs a placeholder (a single space when there is no hint text).
+ *
+ *   <div class="md-field">
+ *       <input class="md-field__input" id="x" placeholder=" " />
+ *       <label class="md-field__label" for="x">Label</label>
+ *       <span class="md-field__suffix">.example.com</span>   (optional)
+ *   </div>
+ *   <p class="md-field__message">Hint or error</p>          (optional)
+ */
+
+.md-field {
+    --md-field-state: 4%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 56px;
+    border-radius: 4px 4px 0 0;
+    background: color-mix(in srgb, var(--ink) var(--md-field-state), transparent);
+    color: var(--ink);
+    transition: background-color .15s;
+}
+
+.md-field:hover {
+    --md-field-state: 8%;
+}
+
+.md-field:focus-within {
+    --md-field-state: 12%;
+}
+
+/* Underline: thin at rest, 2px in the primary colour when focused */
+.md-field::before,
+.md-field::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    pointer-events: none;
+}
+
+.md-field::before {
+    border-bottom: 1px solid var(--ink-soft);
+}
+
+.md-field:hover::before {
+    border-bottom-color: var(--ink);
+}
+
+.md-field::after {
+    border-bottom: 2px solid var(--primary);
+    transform: scaleX(0);
+    transition: transform .2s cubic-bezier(.4, 0, .2, 1);
+}
+
+.md-field:focus-within::after {
+    transform: scaleX(1);
+}
+
+.md-field__input {
+    flex: 1;
+    min-width: 0;
+    min-height: 56px;
+    margin: 0;
+    padding: 24px 16px 7px;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: 25px;
+    outline: none;
+}
+
+textarea.md-field__input {
+    padding-top: 28px;
+    resize: vertical;
+}
+
+/* Hint text appears only once the label has moved up, as in Vuetify */
+.md-field__input::placeholder {
+    color: var(--ink-soft);
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.md-field__input:focus::placeholder {
+    opacity: 1;
+}
+
+.md-field__label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: calc(100% - 32px);
+    overflow: hidden;
+    color: var(--ink-soft);
+    line-height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    transform-origin: left top;
+    transition: transform .15s cubic-bezier(.4, 0, .2, 1), color .15s;
+}
+
+.md-field__input:is(:focus, :not(:placeholder-shown)) ~ .md-field__label {
+    transform: translateY(-9px) scale(.75);
+    max-width: calc((100% - 32px) / .75);
+}
+
+.md-field__input:focus ~ .md-field__label {
+    color: var(--primary);
+}
+
+.md-field__label .optional {
+    font-weight: 400;
+}
+
+/* Suffix (Vuetify's `suffix`): shown once the field is active */
+.md-field__suffix {
+    padding: 0 16px 7px 0;
+    color: var(--ink-soft);
+    line-height: 25px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity .15s;
+}
+
+.md-field__input:is(:focus, :not(:placeholder-shown)) ~ .md-field__suffix {
+    opacity: 1;
+}
+
+.md-field:has(.md-field__suffix) .md-field__input {
+    padding-right: 0;
+}
+
+/* Error: set by the scripts (aria-invalid) or by the browser after the person has interacted (:user-invalid) */
+.md-field:has(.md-field__input:is([aria-invalid=true], :user-invalid))::before,
+.md-field:has(.md-field__input:is([aria-invalid=true], :user-invalid))::after {
+    border-bottom-color: var(--error);
+}
+
+.md-field__input:is([aria-invalid=true], :user-invalid) ~ .md-field__label {
+    color: var(--error);
+}
+
+/* Messages under a field (Vuetify's v-messages) */
+.md-field__message {
+    margin: 0;
+    padding: 6px 16px 0;
+    font-size: .8rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+}
+
+.md-field__message:empty {
+    display: none;
+}
+
+.md-field__message[data-kind="error"] {
+    color: var(--error);
+}
+
+/*
+ * Checkbox and radio (v-checkbox, v-radio): a 40px state layer around the control.
+ *
+ *   <label class="md-choice">
+ *       <span class="md-choice__control">
+ *           <input type="checkbox" />
+ *           <svg class="md-choice__mark" …>…</svg>   (checkbox only)
+ *       </span>
+ *       <span>Label</span>
+ *   </label>
+ */
+
+.md-choice {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.md-choice > :last-child {
+    padding-top: 8px;
+}
+
+.md-choice__control {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color .15s;
+}
+
+.md-choice:hover .md-choice__control {
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.md-choice:has(input:checked):hover .md-choice__control {
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.md-choice__control:has(input:focus-visible) {
+    background: color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.md-choice input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    border: 2px solid var(--ink-soft);
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s;
+}
+
+.md-choice input:focus-visible {
+    outline: none;
+}
+
+.md-choice input[type=checkbox]:checked {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+.md-choice input:user-invalid {
+    border-color: var(--error);
+}
+
+.md-choice__mark {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    color: var(--on-primary);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.md-choice input:checked + .md-choice__mark {
+    opacity: 1;
+}
+
+.md-choice input[type=radio] {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.md-choice input[type=radio]:checked {
+    border-color: var(--primary);
+    background: radial-gradient(var(--primary) 0 4.5px, transparent 5px);
+}

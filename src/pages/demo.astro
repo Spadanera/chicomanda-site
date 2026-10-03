@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro'
 import DecoIcon from '../components/DecoIcon.astro'
 import { SITE } from '../site'
 import { LIMITS } from '../../shared/demo-form.ts'
+import '../styles/fields.css'
 
 const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richiesta demo Chi Comanda')}`
 ---
@@ -31,37 +32,37 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
         <form class="card form" id="modulo" method="post" action="/modulo/demo" data-demo-form>
             <fieldset class="topic">
                 <legend>Di cosa hai bisogno?</legend>
-                <label class="choice">
-                    <input type="radio" name="topic" value="demo" checked />
+                <label class="md-choice">
+                    <span class="md-choice__control"><input type="radio" name="topic" value="demo" checked /></span>
                     <span>Una demo</span>
                 </label>
-                <label class="choice">
-                    <input type="radio" name="topic" value="info" />
+                <label class="md-choice">
+                    <span class="md-choice__control"><input type="radio" name="topic" value="info" /></span>
                     <span>Informazioni</span>
                 </label>
             </fieldset>
 
-            <div class="field">
-                <label for="name">Nome e cognome</label>
-                <input id="name" name="name" type="text" autocomplete="name" required maxlength={LIMITS.name} />
+            <div class="md-field">
+                <input class="md-field__input" id="name" name="name" type="text" autocomplete="name" required maxlength={LIMITS.name} placeholder=" " />
+                <label class="md-field__label" for="name">Nome e cognome</label>
             </div>
-            <div class="field">
-                <label for="venue">Locale</label>
-                <input id="venue" name="venue" type="text" autocomplete="organization" required maxlength={LIMITS.venue} />
+            <div class="md-field">
+                <input class="md-field__input" id="venue" name="venue" type="text" autocomplete="organization" required maxlength={LIMITS.venue} placeholder=" " />
+                <label class="md-field__label" for="venue">Locale</label>
             </div>
             <div class="row">
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" autocomplete="email" required maxlength={LIMITS.email} />
+                <div class="md-field">
+                    <input class="md-field__input" id="email" name="email" type="email" autocomplete="email" required maxlength={LIMITS.email} placeholder=" " />
+                    <label class="md-field__label" for="email">Email</label>
                 </div>
-                <div class="field">
-                    <label for="phone">Telefono <span class="optional">(facoltativo)</span></label>
-                    <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength={LIMITS.phone} />
+                <div class="md-field">
+                    <input class="md-field__input" id="phone" name="phone" type="tel" autocomplete="tel" maxlength={LIMITS.phone} placeholder=" " />
+                    <label class="md-field__label" for="phone">Telefono <span class="optional">(facoltativo)</span></label>
                 </div>
             </div>
-            <div class="field">
-                <label for="message">Messaggio</label>
+            <div class="md-field">
                 <textarea
+                    class="md-field__input"
                     id="message"
                     name="message"
                     rows="5"
@@ -69,6 +70,7 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
                     maxlength={LIMITS.message}
                     placeholder="Che locale hai, quanti tavoli, quando ti farebbe comodo sentirci…"
                 ></textarea>
+                <label class="md-field__label" for="message">Messaggio</label>
             </div>
 
             <!-- Honeypot: hidden from people and screen readers, bots fill it in -->
@@ -77,8 +79,11 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
                 <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
             </div>
 
-            <label class="consent">
-                <input type="checkbox" name="consent" value="yes" required />
+            <label class="md-choice consent">
+                <span class="md-choice__control">
+                    <input type="checkbox" name="consent" value="yes" required />
+                    <svg class="md-choice__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" fill="currentColor" /></svg>
+                </span>
                 <span>
                     Ho letto l’<a href="/privacy">informativa privacy</a> e acconsento al trattamento dei miei dati
                     per essere ricontattato.
@@ -218,48 +223,17 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
     .topic {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 0 16px;
         border: 0;
-        margin: 0;
+        margin: 0 0 0 -10px;
         padding: 0;
     }
 
     .topic legend {
         width: 100%;
-        margin-bottom: 8px;
-        font-weight: 600;
-    }
-
-    .choice {
-        position: relative;
-    }
-
-    .choice input {
-        position: absolute;
-        opacity: 0;
-        inset: 0;
-        margin: 0;
-        cursor: pointer;
-    }
-
-    .choice span {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
-        padding: 8px 18px;
-        border: 1.5px solid var(--line-strong);
-        border-radius: 999px;
-    }
-
-    .choice input:checked + span {
-        background: var(--primary);
-        border-color: var(--primary);
-        color: var(--on-primary);
-    }
-
-    .choice input:focus-visible + span {
-        outline: 3px solid var(--ochre);
-        outline-offset: 2px;
+        margin: 0 0 2px 10px;
+        padding: 0;
+        color: var(--ink-soft);
     }
 
     .row {
@@ -273,45 +247,6 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
         }
     }
 
-    .field {
-        display: grid;
-        gap: 6px;
-    }
-
-    .field label {
-        font-weight: 600;
-    }
-
-    .optional {
-        font-weight: 400;
-        color: var(--ink-soft);
-    }
-
-    input[type=text],
-    input[type=email],
-    input[type=tel],
-    textarea {
-        width: 100%;
-        min-height: 48px;
-        padding: 12px 14px;
-        border: 1.5px solid var(--line-strong);
-        border-radius: 10px;
-        background: var(--bg);
-        color: var(--ink);
-        font: inherit;
-    }
-
-    textarea {
-        resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
-    }
-
     .trap {
         position: absolute;
         left: -10000px;
@@ -321,24 +256,14 @@ const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Richie
     }
 
     .consent {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
+        margin-left: -10px;
         font-size: .95rem;
-    }
-
-    .consent input {
-        width: 22px;
-        height: 22px;
-        margin-top: 2px;
-        flex: none;
-        accent-color: var(--primary);
     }
 
     .notice {
         margin: 0;
-        padding: 12px 14px;
-        border-radius: 10px;
+        padding: 12px 16px;
+        border-radius: var(--radius);
         background: color-mix(in srgb, var(--ochre) 18%, transparent);
     }
 
