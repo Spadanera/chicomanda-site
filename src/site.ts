@@ -16,6 +16,11 @@ export const SITE = {
     indexable: false,
     /** [[DA COMPLETARE: confermare l'indirizzo pubblico di contatto e che sia instradato con Email Routing]] */
     contactEmail: 'info@chicomanda.com',
+    /**
+     * Cloudflare Turnstile site key (public). The default is Cloudflare's test key, which always passes.
+     * [[DA COMPLETARE: chiave del widget Turnstile creato per chicomanda.com e chicomanda-site.pages.dev]]
+     */
+    turnstileSiteKey: '1x00000000000000000000AA',
     /** Venues' installations live at <slug>.<appDomain>. */
     appDomain: 'chicomanda.com',
 } as const

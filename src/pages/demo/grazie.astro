@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro'
+import Logo from '../../components/Logo.astro'
+---
+<Base
+    title="Richiesta inviata"
+    description="Abbiamo ricevuto la tua richiesta: ti ricontattiamo al più presto."
+    noindex
+>
+    <section class="section container message">
+        <Logo size={120} eager />
+        <div class="rule" aria-hidden="true"><span></span></div>
+        <h1>Grazie, richiesta ricevuta</h1>
+        <p>Ti rispondiamo all’indirizzo email che ci hai lasciato, di solito entro un giorno lavorativo.</p>
+        <a class="btn btn-ghost" href="/">Torna alla pagina iniziale</a>
+    </section>
+</Base>
+
+<style>
+    .message {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .message p {
+        max-width: 520px;
+        color: var(--ink-soft);
+    }
+</style>
