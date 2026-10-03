@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro'
+import Logo from '../components/Logo.astro'
+---
+<Base title="Pagina non trovata" description="La pagina che cerchi non esiste." noindex>
+    <section class="section container message">
+        <Logo size={140} eager />
+        <div class="rule" aria-hidden="true"><span></span></div>
+        <p class="code">404</p>
+        <h1>Questo tavolo non c’è</h1>
+        <p>
+            La pagina che cerchi non esiste o è stata spostata. Se volevi entrare nell’app del tuo locale, passa da{' '}
+            <a href="/accedi">Accedi</a>.
+        </p>
+        <div class="actions">
+            <a class="btn btn-primary" href="/">Torna alla pagina iniziale</a>
+            <a class="btn btn-ghost" href="/accedi">Accedi al tuo locale</a>
+        </div>
+    </section>
+</Base>
+
+<style>
+    .message {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .message p {
+        max-width: 520px;
+        color: var(--ink-soft);
+    }
+
+    .code {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        letter-spacing: .4em;
+        color: var(--secondary) !important;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+</style>

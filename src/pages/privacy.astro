@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro'
+import { OWNER, SITE } from '../site'
+
+const updated = '3 ottobre 2026'
+const todo = (value: string) => value.includes('DA COMPLETARE')
+---
+<Base
+    title="Privacy"
+    description="Informativa sul trattamento dei dati personali del sito chicomanda.com: modulo di contatto, statistiche senza cookie, memoria locale del browser."
+>
+    <article class="section container prose">
+        <span class="eyebrow">Informativa privacy</span>
+        <h1>Privacy</h1>
+        <p>
+            Questa informativa, resa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR), riguarda
+            il sito <strong>chicomanda.com</strong>. Non riguarda le app dei singoli locali
+            (<em>nome-del-locale</em>.chicomanda.com), i cui dati sono trattati da ciascun locale secondo la propria
+            informativa. Ultimo aggiornamento: {updated}.
+        </p>
+
+        <h2>Titolare del trattamento</h2>
+        <p>
+            <span class:list={{ todo: todo(OWNER.name) }}>{OWNER.name}</span><br />
+            P.IVA <span class:list={{ todo: todo(OWNER.vat) }}>{OWNER.vat}</span><br />
+            Sede: <span class:list={{ todo: todo(OWNER.address) }}>{OWNER.address}</span><br />
+            PEC: <span class:list={{ todo: todo(OWNER.pec) }}>{OWNER.pec}</span><br />
+            Email: <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+        </p>
+
+        <h2>Richieste di demo e di contatto</h2>
+        <p>
+            Se compili il modulo nella pagina <a href="/demo">Richiedi una demo</a> trattiamo i dati che inserisci:
+            nome, nome del locale, email, telefono (facoltativo) e messaggio, insieme alla data dell’invio e al
+            Paese di provenienza della connessione.
+        </p>
+        <ul>
+            <li><strong>Finalità</strong>: rispondere alla tua richiesta, organizzare la demo, inviarti le informazioni che chiedi.</li>
+            <li>
+                <strong>Base giuridica</strong>: l’esecuzione di misure precontrattuali adottate su tua richiesta
+                (art. 6.1.b GDPR). Il conferimento è facoltativo, ma senza i dati obbligatori non possiamo risponderti.
+            </li>
+            <li>
+                <strong>Come</strong>: il modulo non salva nulla su un database. La richiesta ci arriva come email,
+                inviata tramite Mailjet, e resta nella nostra casella di posta.
+            </li>
+            <li>
+                <strong>Conservazione</strong>: per il tempo necessario a gestire la richiesta e, se non diventi
+                cliente, non oltre <span class="todo">[[DA COMPLETARE: periodo, per esempio 24 mesi]]</span>
+                dall’ultimo contatto.
+            </li>
+            <li>Non usiamo questi dati per newsletter o marketing senza un tuo consenso separato.</li>
+        </ul>
+
+        <h2>Protezione dallo spam</h2>
+        <p>
+            Il modulo usa Cloudflare Turnstile per distinguere le persone dai programmi automatici. Turnstile
+            analizza alcuni segnali tecnici del browser e della connessione solo per questa verifica e non usa
+            cookie di profilazione. La base giuridica è il nostro legittimo interesse a proteggere il sito dagli
+            abusi (art. 6.1.f GDPR).
+        </p>
+
+        <h2>Dati di navigazione e statistiche</h2>
+        <p>
+            Il sito è ospitato su Cloudflare Pages. Come ogni server web, Cloudflare tratta i dati tecnici necessari
+            a consegnare le pagine e a proteggerle dagli attacchi (per esempio indirizzo IP, browser, pagina
+            richiesta), per il tempo strettamente necessario.
+        </p>
+        <p>
+            Per sapere quante persone visitano il sito usiamo Cloudflare Web Analytics, che <strong>non usa cookie</strong>,
+            non identifica i singoli visitatori e ci mostra solo dati aggregati (pagine viste, Paese, tipo di
+            dispositivo).
+        </p>
+
+        <h2>Cookie e memoria del browser</h2>
+        <p>
+            Il sito <strong>non usa cookie</strong>, né propri né di terze parti, e per questo non ti chiede alcun
+            consenso. Usa invece la memoria locale del tuo browser (<em>localStorage</em>), che resta sul tuo
+            dispositivo e non ci viene mai inviata, per due comodità:
+        </p>
+        <ul>
+            <li>il tema chiaro o scuro, se lo scegli con l’apposito pulsante;</li>
+            <li>
+                l’ultimo locale in cui sei entrato dalla pagina <a href="/accedi">Accedi</a>, per mostrarti il
+                pulsante “Entra in …” la volta successiva. Puoi cancellarlo con “Non è il tuo locale? Cambia”.
+            </li>
+        </ul>
+        <p>
+            Per verificare che un locale esista, la pagina Accedi contatta l’indirizzo di quel locale
+            (<em>nome-del-locale</em>.chicomanda.com) prima di portarti lì.
+        </p>
+
+        <h2>A chi comunichiamo i dati</h2>
+        <p>I dati sono trattati da noi e, per nostro conto, dai fornitori nominati responsabili del trattamento:</p>
+        <ul>
+            <li><strong>Cloudflare, Inc.</strong>: hosting del sito, Turnstile, Web Analytics;</li>
+            <li><strong>Mailjet SAS</strong> (gruppo Sinch): invio delle email del modulo.</li>
+        </ul>
+        <p>
+            Cloudflare può trattare dati negli Stati Uniti: il trasferimento avviene sulla base dell’EU-US Data
+            Privacy Framework, a cui Cloudflare aderisce, e delle clausole contrattuali standard della Commissione
+            europea. Non vendiamo né cediamo i dati a terzi.
+        </p>
+
+        <h2>I tuoi diritti</h2>
+        <p>
+            Puoi chiederci in ogni momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne il
+            trattamento, riceverli in formato portabile o opporti al trattamento (articoli 15-22 GDPR), scrivendo a{' '}
+            <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>. Hai anche il diritto di proporre reclamo al
+            Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>).
+        </p>
+
+        <h2>Modifiche</h2>
+        <p>
+            Se cambiamo il modo in cui trattiamo i dati aggiorniamo questa pagina e la data in alto.
+        </p>
+    </article>
+</Base>
