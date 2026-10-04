@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content'
+import Base from '../../layouts/Base.astro'
+
+/** First paragraph of plain text, for the meta description. */
+function firstParagraph(body = ''): string {
+    const paragraph = body.split(/\n\s*\n/).map(p => p.trim())
+        .find(p => p && !/^(#|\[|<|>|\||-|\d+\.|```)/.test(p)) || ''
+    return paragraph.replace(/\s+/g, ' ').replace(/\*\*|\*|`/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').slice(0, 160)
+}
+
+export async function getStaticPaths() {
+    // README of a folder = the folder: readme → /guida, amministratore/readme → /guida/amministratore
+    const pages = await getCollection('guida')
+    return pages.map(entry => ({ params: { slug: entry.id.replace(/(^|\/)readme$/i, '') || undefined }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+const h1 = headings.find(h => h.depth === 1)?.text || 'Guida'
+const title = entry.id === 'readme' ? 'Guida' : `${h1} · Guida`
+const description = firstParagraph(entry.body) || 'Guida di Chi Comanda per il personale dei locali.'
+---
+<Base title={title} description={description}>
+    <article class="section container prose guida">
+        <Content />
+    </article>
+</Base>
+
+<style>
+    .guida :global(h1) {
+        margin-top: 0;
+    }
+
+    .guida :global(h3) {
+        margin-top: 1.6em;
+    }
+
+    .guida :global(img) {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 16px 0 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+    }
+
+    .guida :global(table) {
+        display: block;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 16px 0 24px;
+        font-size: .95rem;
+    }
+
+    .guida :global(th),
+    .guida :global(td) {
+        border: 1px solid var(--line);
+        padding: 8px 10px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .guida :global(th) {
+        background: var(--surface);
+        font-weight: 600;
+    }
+
+    .guida :global(blockquote) {
+        margin: 16px 0;
+        padding: 10px 16px;
+        border-left: 4px solid var(--primary);
+        background: var(--surface);
+        border-radius: 0 6px 6px 0;
+    }
+
+    .guida :global(blockquote p) {
+        margin: 0;
+    }
+
+    .guida :global(ol) {
+        padding-left: 1.4em;
+    }
+
+    .guida :global(code) {
+        font-size: .9em;
+    }
+</style>

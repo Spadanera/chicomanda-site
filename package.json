@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "check": "astro check && tsc -p functions",
     "test": "node --test \"test/**/*.test.ts\"",
+    "guida:sync": "node scripts/sync-guida.mjs",
     "todo": "grep -rn --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.git 'DA COMPLETARE' . || true",
     "dev:functions": "PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA astro build && wrangler pages dev dist"
   },

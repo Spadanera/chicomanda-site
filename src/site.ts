@@ -43,4 +43,5 @@ export const NAV = [
     { href: '/#funzioni', label: 'Funzioni' },
     { href: '/#come-funziona', label: 'Come funziona' },
     { href: '/#per-chi', label: 'Per chi è' },
+    { href: '/guida', label: 'Guida' },
 ] as const

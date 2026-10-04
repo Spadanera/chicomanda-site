@@ -1,0 +1,1 @@
+Copied from chi-comanda docs/guida at 6f7ecee 2026-10-04 by npm run guida:sync. Do not edit.

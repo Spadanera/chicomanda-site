@@ -11,12 +11,32 @@ small backend, a Cloudflare Pages Function. The site's copy is in Italian.
 | `/demo/grazie`, `/demo/errore` | Outcome of the form, also without JavaScript |
 | `/accedi` | Sign-in: sends the user to their venue's app (`<slug>.chicomanda.com/login`) |
 | `/privacy` | Privacy policy |
+| `/guida`, `/guida/…` | User guide for the venues' staff, copied from the app (below) |
 | `404` | Error page |
 | `POST /modulo/demo` | Pages Function of the form (`functions/modulo/demo.ts`) |
 
 The site **never uses the app's paths** (`/login`, `/api`, `/auth`, `/admin`, `/waiter`, `/bartender`, `/checkout`,
 `/tables`, `/profile`, `/invitation`, `/reset`, `/askreset`, `/landing`, `/socket.io`): at the domain cutover they
 become redirects to Libra.
+
+## User guide (`/guida`)
+
+The guide is written in the app's repository, `chi-comanda/docs/guida` (Markdown, Italian), and copied here: never
+edit `src/content/guida` or `public/guida/img` by hand.
+
+```bash
+npm run guida:sync                       # from ../chi-comanda/docs/guida
+npm run guida:sync -- /path/to/docs/guida
+```
+
+The script copies the public pages only (`docs/guida/clienti/` is for clients and never published; a public page
+linking to it stops the copy), rewrites the links between `.md` files to `/guida/<path>` (a folder's `README.md` is
+the folder) and the images to `/guida/img/`, copies only the images the pages use, and records the app's commit in
+`src/content/guida/SOURCE.txt`. Pages are rendered by `src/pages/guida/[...slug].astro` (title from the first `#`,
+description from the first paragraph). After a sync: `npm run build`, check, commit, push.
+
+When to sync: after the app's guide changes on the branch the clients use (today `main`, as only stage and a friendly
+venue use the new features; later `production`).
 
 ## Development
 
