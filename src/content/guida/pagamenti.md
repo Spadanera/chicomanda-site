@@ -40,9 +40,9 @@ Con questi metodi è l'app a chiedere il pagamento, e il tavolo si chiude da sol
 | Pulsante | Cosa succede |
 |---|---|
 | **Satispay (QR)** | Sullo schermo compare un QR code: il cliente apre l'app Satispay e lo inquadra |
-| **Link (SumUp)** | Compare un QR code e un link di pagamento: il cliente lo inquadra o tu gli mandi il link (tasto copia) |
-| **App SumUp** | Si apre l'app SumUp sul tablet della cassa: il cliente avvicina o inserisce la carta nel lettore |
-| **Solo (SumUp)** | Il pagamento arriva al terminale SumUp Solo: il cliente avvicina o inserisce la carta |
+| **Link (SumUp)** | Compare un QR code e un link di pagamento: il cliente lo inquadra o tu gli mandi il link (tasto copia) e paga dal suo telefono |
+| **App SumUp** | Si apre l'app SumUp su questo telefono o tablet con l'importo già scritto: il cliente avvicina o inserisce la carta nel lettore, poi l'app torna a Chi Comanda. Compare solo su telefoni e tablet, non sul computer |
+| **Solo (SumUp)** | L'importo arriva al lettore SumUp Solo: il cliente avvicina o inserisce la carta |
 
 1. Scegli il metodo e tocca **AVVIA PAGAMENTO**.
 2. Mostra il codice al cliente o fagli usare il lettore. In basso leggi «In attesa di pagamento…».
@@ -51,10 +51,12 @@ Con questi metodi è l'app a chiedere il pagamento, e il tavolo si chiude da sol
 Durante l'attesa:
 
 - **Verifica ora** chiede subito l'esito, senza aspettare l'aggiornamento automatico;
-- **Annulla** interrompe l'attesa e torna alla scelta del metodo. Con Satispay annulla anche la richiesta di
-  pagamento, così il cliente non può più pagarla;
-- con **App SumUp**, **Riapri app SumUp** riapre l'app se l'hai chiusa. Se il cliente ha pagato ma l'app non lo
-  conferma, controlla sull'app SumUp e tocca **Confermo pagamento ricevuto**.
+- **Annulla** interrompe l'attesa e torna alla scelta del metodo. Con Satispay e con il link SumUp annulla anche la
+  richiesta, così il cliente non può più pagarla; con il Solo ferma il pagamento sul lettore. Se il cliente aveva
+  appena pagato, il pagamento vale comunque e il tavolo si chiude;
+- con **App SumUp**, **Riapri app SumUp** riapre l'app se l'hai chiusa. Se il cliente ha pagato ma Chi Comanda non lo
+  sa (per esempio hai chiuso il browser), controlla sull'app SumUp e tocca **Confermo pagamento ricevuto**: il
+  pagamento viene registrato e il tavolo si chiude.
 
 Se leggi **Pagamento non riuscito**, chiedi al cliente di riprovare o scegli un altro metodo.
 
@@ -64,4 +66,4 @@ di nuovo l'esito del pagamento in corso.
 ## Incassi della serata
 
 Ogni pagamento viene registrato con il suo metodo. L'amministratore vede il totale per metodo nel resoconto
-dell'evento, scheda **Incassi** (vedi [Eventi](/guida/amministratore/eventi)).
+dell'evento, scheda **Riepilogo** (vedi [Eventi](/guida/amministratore/eventi)), e nei [report](/guida/amministratore/report).

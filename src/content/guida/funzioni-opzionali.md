@@ -12,6 +12,7 @@ non compare: niente pulsanti, niente voci di menu.
 | **Accesso con Google** | **Accedi con Google** e **Accetta con Google** | I pulsanti compaiono nelle pagine di accesso e di invito |
 | **Messaggi allo staff** | Messaggi brevi tra colleghi durante la serata | Con una serata attiva, in alto c'è l'icona della persona che parla e nel menu dell'avatar la voce **MESSAGGI** |
 | **Consumazione minima** | Un prezzo minimo per evento, da far pagare al posto di un prodotto più economico | Nella finestra dell'evento c'è **Prezzo Consumazione Minima** |
+| **Report del personale** | Nei report, la scheda con il lavoro di ciascuno (ordini, tavoli, incassi) | In *Amministrazione → Report* c'è la scheda **Personale** |
 
 Le funzioni del locale le decide chi gestisce il servizio Chi Comanda per il locale. Se ne vuoi una, l'amministratore
 del locale può chiederla.
@@ -22,3 +23,4 @@ Dove sono spiegate:
 - Notifiche push e messaggi: [Messaggi e notifiche](/guida/messaggi-e-notifiche)
 - Accesso con Google: [Primi passi](/guida/primi-passi)
 - Consumazione minima: [Cameriere](/guida/cameriere#consumazione-minima) e [Eventi](/guida/amministratore/eventi#consumazione-minima)
+- Report del personale: [Report](/guida/amministratore/report#personale)

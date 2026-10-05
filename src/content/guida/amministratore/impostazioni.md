@@ -48,8 +48,9 @@ Il metodo compare subito nella cassa.
 
 ### Metodi di pagamento elettronico
 
-In alto nella pagina ci sono i servizi con cui la cassa chiede il pagamento direttamente dall'app: **SumUp Checkout
-(link / QR)**, **SumUp POS (App su tablet)**, **Satispay (QR code)**, **SumUp Solo (terminale standalone)**.
+In alto nella pagina ci sono i servizi con cui la cassa chiede il pagamento direttamente dall'app: **SumUp Solo
+(lettore collegato a internet)**, **SumUp link / QR (senza lettore)**, **App SumUp sullo stesso telefono o tablet**,
+**Satispay (QR code)**. Sotto lo stato, la scheda dice anche il codice esercente SumUp e il lettore abbinato.
 
 Ognuno mostra se è **Attivo** o **Disattivato** e se è **Configurato**. Con **Abilita** e **Disabilita** lo accendi o
 lo spegni senza perdere la configurazione.

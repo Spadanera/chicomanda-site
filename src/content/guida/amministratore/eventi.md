@@ -60,10 +60,11 @@ Tocca un evento (attivo o chiuso) per aprire il resoconto. Ha tre schede:
 
 - **Consumazioni**: quanti pezzi di ogni prodotto sono stati ordinati, diviso tra bevande e cibo;
 - **Tavoli**: l'elenco dei tavoli; toccane uno per vedere cosa ha preso e il suo totale;
-- **Incassi**: il totale per metodo di pagamento (contanti, carta, Satispay, buoni pasto…), con il numero di
-  pagamenti.
+- **Riepilogo**: netto, incassato, tavoli, scontrino medio, sconti, storni, durata e incassi per metodo (contanti,
+  carta, Satispay, buoni pasto…), con il confronto con le serate precedenti. È lo stesso riepilogo dei
+  [report](/guida/amministratore/report#riepilogo): **APRI NEL REPORT** porta agli altri report della serata.
 
-<img src="/guida/img/admin-report-incassi.png" alt="Scheda Incassi del resoconto" width="280">
+<img src="/guida/img/admin-evento-riepilogo.png" alt="Scheda Riepilogo del resoconto" width="280">
 
 In fondo vedi numero di tavoli, incasso totale e sconti. Tocca **Chiudi** per tornare all'elenco.
 
