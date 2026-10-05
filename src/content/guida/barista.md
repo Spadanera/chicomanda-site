@@ -23,7 +23,7 @@ Per ogni ordine vedi:
 
 Gli ordini completati restano in lista, sbiaditi.
 
-Quando arriva un nuovo ordine l'app suona e mostra «Nuovo ordine». Tieni il volume del dispositivo acceso.
+Quando arriva un nuovo ordine l'app mostra «Nuovo ordine» in basso e l'ordine compare nell'elenco.
 
 ## Preparare un ordine
 

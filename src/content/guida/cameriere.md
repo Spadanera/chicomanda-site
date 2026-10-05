@@ -30,7 +30,8 @@ La piantina si aggiorna da sola quando un collega apre un tavolo («Tavoli aggio
 
 <img src="/guida/img/cameriere-prodotti.png" alt="Menu con i pulsanti matita e più" width="280">
 
-In basso vedi sempre quante bevande e quanti cibi hai aggiunto e il totale in euro.
+In basso vedi sempre quanti prodotti hai aggiunto per ogni categoria del menu (per esempio bevande e cibo, con la
+loro icona; i fuori menu a parte) e il totale in euro.
 
 ### Aggiungere una nota
 
@@ -49,7 +50,7 @@ La nota arriva al bar o in cucina insieme al prodotto, in evidenza.
 Per qualcosa che non è nel menu:
 
 1. In fondo all'elenco tocca **AGGIUNGI FUORI MENU**.
-2. Scrivi **Nome** e **Prezzo**.
+2. Scrivi **Nome** e **Prezzo** (anche con i centesimi, per esempio 4,50).
 3. Scegli la **Destinazione**: dove va preparato (es. *Bar* o *Cucina*).
 4. Tocca **CONFERMA**.
 

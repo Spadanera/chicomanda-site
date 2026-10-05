@@ -59,6 +59,12 @@ Vedi [Messaggi e notifiche](/guida/messaggi-e-notifiche#se-non-arrivano). Contro
 
 Nella pagina di accesso tocca **Password dimenticata**. Vedi [Primi passi](/guida/primi-passi#password-dimenticata).
 
+### Leggo «Troppi tentativi di accesso: riprova tra … minuti»
+
+Dopo 5 accessi falliti di fila con la stessa e-mail l'app aspetta un po' prima di provare ancora (al massimo 15
+minuti): così nessuno può indovinare una password a forza di tentativi. Aspetta il tempo indicato e riprova con calma,
+oppure usa **Password dimenticata**. Un accesso riuscito azzera il conteggio.
+
 ### Il link dell'invito non funziona
 
 Il link vale 24 ore. Chiedi all'amministratore di invitarti di nuovo.

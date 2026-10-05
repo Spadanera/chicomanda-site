@@ -2,7 +2,8 @@
 
 [← Indice](/guida)
 
-L'amministratore prepara le serate e il locale: eventi, piantina, menu, postazioni, persone e aspetto dell'app.
+L'amministratore prepara le serate e il locale: eventi, piantina, menu, postazioni, persone e aspetto dell'app; e
+controlla nel registro chi ha fatto cosa.
 
 Dalla schermata iniziale tocca **Amministrazione**.
 
@@ -20,6 +21,7 @@ sinistra.
 | **Pagamenti** | I metodi di pagamento della cassa (funzione opzionale) | [Impostazioni e pagamenti](/guida/amministratore/impostazioni#pagamenti) |
 | **Impostazioni** | Nome, colori e logo del locale | [Impostazioni e pagamenti](/guida/amministratore/impostazioni) |
 | **Utenti** | Inviti e ruoli dello staff | [Persone](/guida/amministratore/persone) |
+| **Registro** | Chi ha fatto cosa: ordini, cassa, menu, serate, staff, accessi | [Registro attività](/guida/amministratore/registro-attivita) |
 
 ## Prima serata: da dove partire
 

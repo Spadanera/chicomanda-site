@@ -56,4 +56,4 @@ Se usi un altro telefono, l'app ti chiede se vuoi le notifiche anche lì.
   del browser. Sbloccale dalle impostazioni del sito nel browser (di solito il lucchetto accanto all'indirizzo) e
   riattivale dal profilo.
 - Controlla che il telefono non sia in modalità *Non disturbare* o risparmio energetico.
-- Con l'app aperta sulla tua postazione, i nuovi ordini arrivano comunque con un suono.
+- Con l'app aperta sulla tua postazione, i nuovi ordini compaiono comunque nell'elenco, con la scritta «Nuovo ordine».
