@@ -14,6 +14,7 @@ small backend, a Cloudflare Pages Function. The site's copy is in Italian.
 | `/guida`, `/guida/…` | User guide for the venues' staff, copied from the app (below) |
 | `404` | Error page |
 | `POST /modulo/demo` | Pages Function of the form (`functions/modulo/demo.ts`) |
+| `GET /oauth/google` | Relay of the app's Google login (`functions/oauth/google.ts`, below) |
 
 The site **never uses the app's paths** (`/login`, `/api`, `/auth`, `/admin`, `/waiter`, `/bartender`, `/checkout`,
 `/tables`, `/profile`, `/invitation`, `/reset`, `/askreset`, `/landing`, `/socket.io`): at the domain cutover they
@@ -126,6 +127,19 @@ validates it with the app's rules and, before redirecting, makes a `no-cors` req
 `https://<slug>.chicomanda.com/api/health` with a 6-second timeout: if the subdomain doesn't exist the page says
 "Locale non trovato" instead of showing the browser's DNS error. No list of clients is published. This works as long
 as the `chicomanda.com` zone has **no wildcard DNS record** (`*`). Direct links: `/accedi?locale=ludoproject`.
+
+## Google login relay (`/oauth/google`)
+
+Google accepts no wildcard redirect URI, so instead of registering `https://<slug>.chicomanda.com/api/auth/google/callback`
+for every client, the OAuth client has **one** redirect URI, `https://chicomanda.com/oauth/google`, and every installation
+sets `GOOGLE_CALLBACK_URL` to it (the app's `scripts/new-client` does). The installation sends Google a signed `state`
+naming its host; Google answers here; the function forwards the whole query to
+`https://<host>/api/auth/google/callback`, where the installation checks the signature and its session's nonce
+(`shared/oauth-relay.ts`, app: `server/src/auth/google-state.ts`).
+
+It forwards only to `<slug>.chicomanda.com` with a valid client slug, or to a host in the variable
+`OAUTH_EXTRA_HOSTS` of the Pages project (comma separated: the stage on Railway, clients on their own domain). It never
+verifies or stores anything: the code is useless without the Google client secret, which only the installations hold.
 
 ## Publishing on Cloudflare Pages
 
