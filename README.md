@@ -17,7 +17,7 @@ small backend, a Cloudflare Pages Function. The site's copy is in Italian.
 
 The site **never uses the app's paths** (`/login`, `/api`, `/auth`, `/admin`, `/waiter`, `/bartender`, `/checkout`,
 `/tables`, `/profile`, `/invitation`, `/reset`, `/askreset`, `/landing`, `/socket.io`): at the domain cutover they
-become redirects to Libra.
+became redirects to Ludoproject's app (`ludoproject.chicomanda.com`) at the cutover of 5 October 2026.
 
 ## User guide (`/guida`)
 
@@ -121,11 +121,11 @@ If one is missing the Function answers with an error and the page offers the e-m
 
 ### Sign-in (`/accedi`)
 
-`/accedi` normalises the typed name ("Bagno Al Mare" → `bagno-al-mare`; `libra.chicomanda.com/login` is accepted too),
+`/accedi` normalises the typed name ("Bagno Al Mare" → `bagno-al-mare`; `ludoproject.chicomanda.com/login` is accepted too),
 validates it with the app's rules and, before redirecting, makes a `no-cors` request to
 `https://<slug>.chicomanda.com/api/health` with a 6-second timeout: if the subdomain doesn't exist the page says
 "Locale non trovato" instead of showing the browser's DNS error. No list of clients is published. This works as long
-as the `chicomanda.com` zone has **no wildcard DNS record** (`*`). Direct links: `/accedi?locale=libra`.
+as the `chicomanda.com` zone has **no wildcard DNS record** (`*`). Direct links: `/accedi?locale=ludoproject`.
 
 ## Publishing on Cloudflare Pages
 

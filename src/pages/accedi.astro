@@ -43,7 +43,7 @@ import '../styles/fields.css'
                 </div>
                 <p class="md-field__message status" id="locale-status" data-status role="status" aria-live="polite"></p>
                 <p class="md-field__message" id="locale-help">
-                    È l’indirizzo che usate per l’app, per esempio <strong>libra</strong>.{SITE.appDomain}.
+                    È l’indirizzo che usate per l’app, per esempio <strong>ludoproject</strong>.{SITE.appDomain}.
                 </p>
                 <button class="btn btn-primary wide" type="submit">Continua</button>
             </form>
@@ -152,7 +152,7 @@ import '../styles/fields.css'
         input.focus()
     })
 
-    // Direct link: /accedi?locale=libra (e-mails, QR codes)
+    // Direct link: /accedi?locale=ludoproject (e-mails, QR codes)
     const requested = new URLSearchParams(location.search).get('locale')
     const last = storage.get()
     if (requested) {
