@@ -55,5 +55,7 @@ In alto nella pagina ci sono i servizi con cui la cassa chiede il pagamento dire
 Ognuno mostra se è **Attivo** o **Disattivato** e se è **Configurato**. Con **Abilita** e **Disabilita** lo accendi o
 lo spegni senza perdere la configurazione.
 
-La prima configurazione richiede i dati del contratto con SumUp o Satispay: le istruzioni sono nell'area riservata ai
-clienti di Chi Comanda.
+La prima configurazione richiede l'account del locale presso SumUp o Satispay. Le istruzioni passo per passo:
+
+- [Pagamenti con SumUp](/guida/amministratore/pagamenti-sumup): SumUp Solo, link / QR, App SumUp;
+- [Pagamenti con Satispay](/guida/amministratore/pagamenti-satispay): attivazione del QR code, prova e uso.

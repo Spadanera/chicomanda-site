@@ -33,7 +33,8 @@ riuscito.
 
 ### Pagamenti elettronici
 
-> **Funzione opzionale** · Solo se il locale ha attivato i pagamenti elettronici e configurato un servizio.
+> **Funzione opzionale** · Solo se il locale ha attivato i pagamenti elettronici e configurato un servizio. Come si
+> configurano: [SumUp](/guida/amministratore/pagamenti-sumup) e [Satispay](/guida/amministratore/pagamenti-satispay).
 
 Con questi metodi è l'app a chiedere il pagamento, e il tavolo si chiude da solo quando il pagamento arriva.
 

@@ -18,7 +18,7 @@ sinistra.
 | **Tavoli** | Disegni le sale e la piantina dei tavoli | [Il locale](/guida/amministratore/locale#tavoli) |
 | **Menu** | Menu, categorie e prodotti, con prezzi e disponibilità | [Il locale](/guida/amministratore/locale#menu) |
 | **Destinazioni** | Le postazioni (bar, cucina…) e i tempi di attesa | [Il locale](/guida/amministratore/locale#destinazioni) |
-| **Pagamenti** | I metodi di pagamento della cassa (funzione opzionale) | [Impostazioni e pagamenti](/guida/amministratore/impostazioni#pagamenti) |
+| **Pagamenti** | I metodi di pagamento della cassa (funzione opzionale) | [Impostazioni e pagamenti](/guida/amministratore/impostazioni#pagamenti), [SumUp](/guida/amministratore/pagamenti-sumup), [Satispay](/guida/amministratore/pagamenti-satispay) |
 | **Impostazioni** | Nome, colori e logo del locale | [Impostazioni e pagamenti](/guida/amministratore/impostazioni) |
 | **Utenti** | Inviti e ruoli dello staff | [Persone](/guida/amministratore/persone) |
 | **Report** | Incassi, prodotti, orari, sconti, personale e postazioni, per serata o per periodo | [Report](/guida/amministratore/report) |
