@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro'
+import Provider from '../components/Provider.astro'
+import { LEGAL, SITE } from '../site'
+
+// Data processing agreement (art. 28 GDPR), part of the terms. Facts from chi-comanda docs/privacy-data.md: keep the
+// sub-processors and the measures in step with it. Railway region checked on 8 October 2026: europe-west4 (Netherlands).
+const subProcessors = [
+    { name: 'Railway Corporation', what: 'server e database dell’applicazione', where: 'server nei Paesi Bassi (UE); società negli Stati Uniti' },
+    { name: 'Cloudflare, Inc.', what: 'DNS, backup cifrati, protezione della registrazione dagli abusi, inoltro del login con Google', where: 'rete globale; società negli Stati Uniti' },
+    { name: 'Mailjet SAS (gruppo Sinch)', what: 'invio delle email del servizio (inviti, recupero password, avvisi)', where: 'Unione europea' },
+    { name: 'Functional Software, Inc. (Sentry)', what: 'segnalazione degli errori tecnici, configurata senza dati degli utenti', where: 'Stati Uniti' },
+    { name: 'Google Ireland Limited', what: 'accesso con Google, solo per chi lo sceglie', where: 'Unione europea; gruppo negli Stati Uniti' },
+    { name: 'Servizi di notifica dei browser (Google, Apple, Mozilla)', what: 'consegna delle notifiche push, con contenuto cifrato che non possono leggere', where: 'secondo il dispositivo' },
+]
+---
+<Base
+    title="Accordo sul trattamento dei dati"
+    description="Accordo sul trattamento dei dati personali (art. 28 GDPR) tra i locali che usano Chi Comanda e il fornitore del servizio."
+>
+    <article class="section container prose">
+        <span class="eyebrow">Art. 28 GDPR</span>
+        <h1>Accordo sul trattamento dei dati</h1>
+        <p class="meta">Versione {LEGAL.version}, in vigore dal {LEGAL.date}. Fa parte delle <a href="/condizioni">condizioni del servizio</a>.</p>
+        <p>
+            Usando Chi Comanda il locale (il <strong>Cliente</strong>, titolare del trattamento) ci affida i dati personali
+            del suo staff e quelli che inserisce durante il servizio. Per questi dati siamo
+            <strong>responsabili del trattamento</strong> ai sensi dell’articolo 28 del Regolamento (UE) 2016/679 (GDPR),
+            e li trattiamo come descritto qui.
+        </p>
+
+        <h2>1. Responsabile del trattamento</h2>
+        <Provider />
+
+        <h2>2. Oggetto, natura e durata</h2>
+        <ul>
+            <li><strong>Oggetto</strong>: far funzionare Chi Comanda per il locale (ordini, comande, tavoli, cassa, staff, report).</li>
+            <li><strong>Operazioni</strong>: raccolta, registrazione, conservazione, consultazione, invio ai dispositivi dello staff, backup, cancellazione.</li>
+            <li><strong>Durata</strong>: quella dell’abbonamento, più i tempi di cancellazione dell’art. 9.</li>
+        </ul>
+
+        <h2>3. Interessati e dati</h2>
+        <ul>
+            <li>
+                <strong>Staff del locale</strong>: nome, email, ruoli, foto del profilo (se caricata o presa da Google),
+                cosa ha fatto durante il servizio (ordini presi, tavoli aperti, pagamenti registrati), registro delle
+                attività con indirizzo IP e tipo di dispositivo degli accessi.
+            </li>
+            <li>
+                <strong>Clienti del locale</strong>: Chi Comanda non chiede dati dei clienti. Possono comparire solo nei
+                testi liberi che lo staff scrive (per esempio il nome di un tavolo, “Festa di Marco”, o una nota su un
+                prodotto). Il Cliente si impegna a scrivere solo quello che serve e a non inserire dati particolari
+                (salute, allergie riferite a una persona identificata, eccetera).
+            </li>
+            <li>Nessun dato di carte di pagamento: i pagamenti elettronici passano dagli account SumUp o Satispay del Cliente.</li>
+        </ul>
+
+        <h2>4. Istruzioni del Cliente</h2>
+        <p>
+            Trattiamo i dati solo per erogare il servizio e secondo le istruzioni del Cliente, che sono queste condizioni
+            e quello che il Cliente fa nell’app (per esempio invitare o rimuovere una persona, cancellare il locale). Se
+            un’istruzione ci sembra contraria alla legge lo diciamo al Cliente. Non usiamo i dati per scopi nostri, non
+            li vendiamo e non li usiamo per pubblicità.
+        </p>
+
+        <h2>5. Riservatezza e accesso</h2>
+        <p>
+            Ai dati accede solo chi lavora al servizio, vincolato alla riservatezza, e solo quando serve: assistenza,
+            configurazione richiesta dal Cliente, problemi tecnici. Ogni nostro accesso al locale con i poteri di
+            amministratore resta nel registro attività del locale, con <em>(piattaforma)</em> accanto al nome.
+        </p>
+
+        <h2>6. Misure di sicurezza</h2>
+        <ul>
+            <li>Server e database nell’Unione europea (Paesi Bassi); collegamenti sempre cifrati (HTTPS).</li>
+            <li>Password conservate solo in forma cifrata non reversibile (bcrypt); limiti ai tentativi di accesso.</li>
+            <li>
+                Ogni dato appartiene a un solo locale e il server controlla il locale a ogni richiesta; test automatici
+                verificano che un locale non possa leggere o modificare i dati di un altro.
+            </li>
+            <li>
+                Backup automatici giornalieri cifrati (AES-256), la cui chiave di lettura è conservata fuori dai server,
+                cancellati dopo 30 giorni.
+            </li>
+            <li>Registro delle attività del locale, conservato 24 mesi, consultabile dagli amministratori.</li>
+            <li>Segnalazioni di errore configurate per non contenere dati degli utenti.</li>
+        </ul>
+
+        <h2>7. Sub-responsabili</h2>
+        <p>
+            Il Cliente ci autorizza ad avvalerci dei fornitori qui sotto, a cui imponiamo per contratto obblighi di
+            protezione equivalenti. Se ne aggiungiamo o sostituiamo uno aggiorniamo questa pagina e lo comunichiamo
+            all’Amministratore almeno 15 giorni prima; il Cliente può opporsi per motivi legati alla protezione dei
+            dati e, se non troviamo una soluzione, disdire senza costi aggiuntivi.
+        </p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Fornitore</th><th>Cosa fa</th><th>Dove</th></tr></thead>
+                <tbody>
+                    {subProcessors.map(s => <tr><td>{s.name}</td><td>{s.what}</td><td>{s.where}</td></tr>)}
+                </tbody>
+            </table>
+        </div>
+        <p>
+            Quando un fornitore tratta dati fuori dall’Unione europea, il trasferimento avviene sulla base del
+            EU-US Data Privacy Framework, se il fornitore vi aderisce, o delle clausole contrattuali standard della
+            Commissione europea.
+        </p>
+
+        <h2>8. Assistenza al Cliente</h2>
+        <ul>
+            <li>
+                <strong>Diritti degli interessati</strong>: l’app permette a ogni persona di scaricare i propri dati e di
+                eliminare il proprio account, e all’Amministratore di esportare tutti i dati del locale. Per le altre
+                richieste aiutiamo il Cliente a rispondere.
+            </li>
+            <li>
+                <strong>Violazioni dei dati</strong>: se scopriamo una violazione che riguarda i dati del Cliente lo
+                avvisiamo senza ingiustificato ritardo, e comunque entro 48 ore, con le informazioni che abbiamo per la
+                sua eventuale notifica al Garante.
+            </li>
+            <li>
+                <strong>Verifiche</strong>: su richiesta forniamo le informazioni necessarie a dimostrare il rispetto di
+                questo accordo; eventuali verifiche ulteriori si concordano per iscritto, con un preavviso ragionevole.
+            </li>
+        </ul>
+
+        <h2>9. Fine del trattamento</h2>
+        <p>
+            Il Cliente può scaricare in ogni momento l’archivio completo dei dati del locale. Alla fine dell’abbonamento
+            i dati seguono i tempi delle <a href="/condizioni">condizioni</a> (art. 7) e poi vengono cancellati; dai
+            backup spariscono entro i 30 giorni successivi. Gli account dello staff che non lavorano più in nessun locale
+            vengono resi anonimi: ordini e pagamenti restano coerenti, attribuiti a “Utente eliminato”.
+        </p>
+
+        <h2>10. Contatti</h2>
+        <p>
+            Per tutto ciò che riguarda i dati personali scrivi a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+        </p>
+    </article>
+</Base>
+
+<style>
+    .meta {
+        color: var(--ink-soft);
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin-block: 1em;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: .9375rem;
+    }
+
+    th,
+    td {
+        text-align: left;
+        vertical-align: top;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    th {
+        font-weight: 600;
+        border-bottom-color: var(--line-strong);
+    }
+</style>

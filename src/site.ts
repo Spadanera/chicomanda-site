@@ -80,3 +80,15 @@ export const NAV = [
     { href: '/prezzi', label: 'Prezzi' },
     { href: '/guida', label: 'Guida' },
 ] as const
+
+/**
+ * Version of the terms, the privacy notice and the data processing agreement: the app stores the one each owner accepts
+ * (chi-comanda LEGAL_VERSION, with TERMS_URL = /condizioni and PRIVACY_URL = /privacy). A new text = a new version here
+ * and in the app's LEGAL_VERSION.
+ */
+export const LEGAL = {
+    version: '2026-10',
+    date: '8 ottobre 2026',
+    /** Courts for disputes with business customers (terms, art. 17). */
+    court: '',
+} as const

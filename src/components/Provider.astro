@@ -1,0 +1,15 @@
+---
+import { OWNER, SITE } from '../site'
+
+// Who provides the service, as the terms, the privacy notice and the data processing agreement must say. Selling
+// subscriptions needs a VAT number, a registered address and a PEC: until OWNER has them they show as
+// [[DA COMPLETARE: …]] (`npm run todo`).
+const missing = (what: string) => `[[DA COMPLETARE: ${what}]]`
+---
+<p>
+    <strong>{OWNER.name}</strong><br />
+    {OWNER.address ? <>Sede: {OWNER.address}</> : <>Sede: <span class="todo">{missing('indirizzo della sede')}</span></>}<br />
+    {OWNER.vat ? <>P.IVA {OWNER.vat}</> : <>P.IVA <span class="todo">{missing('partita IVA')}</span></>}<br />
+    {OWNER.pec ? <>PEC: {OWNER.pec}</> : <>PEC: <span class="todo">{missing('PEC')}</span></>}<br />
+    Email: <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+</p>

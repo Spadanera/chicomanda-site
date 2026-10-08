@@ -1,0 +1,250 @@
+---
+import Base from '../layouts/Base.astro'
+import Provider from '../components/Provider.astro'
+import { LEGAL, PRICING, SITE } from '../site'
+
+// Terms of the self-service subscription (app.chicomanda.com). Every rule here is what the app does (chi-comanda
+// docs/saas.md, *Lifecycle*, *Decisions*): change them together. A new text = a new LEGAL.version (src/site.ts) and
+// the same LEGAL_VERSION on the shared installation. To be reviewed by a legal advisor before the first sale.
+const court = LEGAL.court || '[[DA COMPLETARE: città del foro]]'
+---
+<Base
+    title="Condizioni del servizio"
+    description="Condizioni generali del servizio Chi Comanda: prova gratuita, abbonamento, pagamenti, disdetta, dati del locale, responsabilità."
+>
+    <article class="section container prose">
+        <span class="eyebrow">Condizioni generali</span>
+        <h1>Condizioni del servizio</h1>
+        <p class="meta">Versione {LEGAL.version}, in vigore dal {LEGAL.date}.</p>
+        <p>
+            Queste condizioni regolano l’uso di Chi Comanda da parte dei locali che si registrano da soli e
+            sottoscrivono un abbonamento. Registrando un locale e spuntando “Accetto le condizioni del servizio” le
+            accetti per conto del locale. Sono parte delle condizioni anche
+            l’<a href="/trattamento-dati">accordo sul trattamento dei dati</a> e, per quanto riguarda i tuoi dati
+            personali, l’<a href="/privacy">informativa sulla privacy</a>.
+        </p>
+
+        <h2>1. Chi fornisce il servizio</h2>
+        <Provider />
+        <p>
+            Nel testo: “noi” è il fornitore; “Cliente” è l’impresa o il professionista che registra il locale;
+            “Amministratore” è la persona che lo registra o che il Cliente nomina amministratore; “Utenti” sono le
+            persone che il Cliente invita a usare il servizio (camerieri, baristi, cassa…).
+        </p>
+
+        <h2>2. Il servizio e a chi è rivolto</h2>
+        <p>
+            Chi Comanda è un’applicazione web per gestire ordini, comande, tavoli e conti di bar, ristoranti e locali
+            simili, usata dal telefono o dal computer. I locali registrati da soli funzionano sull’installazione
+            condivisa <strong>app.chicomanda.com</strong>, ciascuno separato dagli altri.
+        </p>
+        <p>
+            Il servizio è riservato a imprese e professionisti, per la loro attività: non è offerto ai consumatori.
+            Chi registra un locale dichiara di agire per conto del Cliente e di averne i poteri.
+        </p>
+
+        <h2>3. Registrazione e account</h2>
+        <ul>
+            <li>I dati della registrazione e quelli di fatturazione devono essere veri e aggiornati.</li>
+            <li>
+                Ogni persona ha il suo account e ne custodisce la password. Il Cliente risponde di quello che fanno nel
+                servizio i suoi Utenti e decide chi invitare e con quali ruoli.
+            </li>
+            <li>Se sospetti un accesso non autorizzato, cambia la password e scrivici subito.</li>
+        </ul>
+
+        <h2>4. Prova gratuita</h2>
+        <ul>
+            <li>
+                Un locale appena registrato ha <strong>{PRICING.trialDays} giorni di prova</strong> con tutte le
+                funzioni del piano Pro, senza dati di pagamento.
+            </li>
+            <li>
+                La prova è una per account: un altro locale registrato dalla stessa persona parte senza prova. Durante la
+                prova un locale può mandare al massimo 20 inviti al giorno.
+            </li>
+            <li>
+                Finita la prova senza un abbonamento, il locale passa in <strong>sola lettura</strong> (art. 7).
+            </li>
+            <li>Possiamo chiudere in anticipo una prova usata in modo abusivo (per esempio registrazioni ripetute).</li>
+        </ul>
+
+        <h2>5. Piani, prezzi e pagamento</h2>
+        <ul>
+            <li>
+                I piani e i prezzi sono quelli della pagina <a href="/prezzi">Prezzi</a> e della pagina Abbonamento
+                dell’app al momento della sottoscrizione, <strong>IVA esclusa</strong>.
+            </li>
+            <li>
+                Il pagamento è anticipato, mensile o annuale, con carta tramite Stripe; l’abbonamento si rinnova da solo
+                alla fine di ogni periodo finché non lo disdici. Se ti abboni durante la prova, il primo pagamento parte
+                alla fine della prova.
+            </li>
+            <li>
+                Per ogni pagamento emettiamo fattura elettronica con i dati di fatturazione che inserisci (ragione
+                sociale, partita IVA o codice fiscale, indirizzo, codice SDI o PEC): la loro correttezza è a carico tuo.
+            </li>
+            <li>
+                Puoi passare da un piano all’altro quando vuoi, da Gestisci l’abbonamento: la pagina di Stripe ti mostra
+                l’importo prima che tu confermi.
+            </li>
+            <li>
+                Se cambiamo i prezzi te lo scriviamo almeno 30 giorni prima; il nuovo prezzo vale dal rinnovo
+                successivo e, se non ti va bene, puoi disdire prima.
+            </li>
+        </ul>
+
+        <h2>6. Pagamento non riuscito</h2>
+        <p>
+            Se un pagamento non va a buon fine il locale continua a funzionare per <strong>{PRICING.graceDays}
+            giorni</strong> e ti avvisiamo per email. Se nel frattempo il pagamento non riesce, il locale passa in sola
+            lettura. Non succede mai durante una serata aperta: la serata continua e la sospensione si applica alla sua
+            chiusura, o comunque dopo 36 ore. Appena il pagamento riesce il locale torna operativo.
+        </p>
+
+        <h2>7. Sola lettura, fine del servizio e dati del locale</h2>
+        <ul>
+            <li>
+                In sola lettura menu, serate passate, report e registro si consultano e l’archivio dei dati si scarica,
+                ma non si prendono ordini e non si fanno modifiche.
+            </li>
+            <li>
+                Dopo {PRICING.readOnlyDays} giorni di sola lettura l’abbonamento si chiude. Dopo altri
+                {PRICING.deletionDays} giorni ti avvisiamo per email e, 14 giorni dopo l’avviso, i dati del locale
+                vengono cancellati. Una prova mai usata (nessuna serata creata) segue lo stesso avviso e viene
+                cancellata 30 giorni dopo la sua fine.
+            </li>
+            <li>
+                L’Amministratore può chiedere in ogni momento la cancellazione del locale: diventa definitiva dopo 30
+                giorni, durante i quali può ripensarci.
+            </li>
+            <li>
+                I dati cancellati restano nei backup cifrati al massimo 30 giorni. I dati restano tuoi: puoi scaricarne
+                l’archivio completo in qualsiasi momento finché il locale esiste.
+            </li>
+        </ul>
+
+        <h2>8. Disdetta e recesso</h2>
+        <ul>
+            <li>
+                Puoi disdire quando vuoi da Amministrazione → Abbonamento → Gestisci l’abbonamento. La disdetta vale alla
+                fine del periodo già pagato, fino al quale il locale funziona normalmente; non sono previsti rimborsi
+                per la parte di periodo non usata.
+            </li>
+            <li>
+                Possiamo recedere con 30 giorni di preavviso per email; in questo caso ti rimborsiamo la parte già
+                pagata e non goduta.
+            </li>
+            <li>
+                Possiamo sospendere o chiudere subito l’account di chi viola in modo grave l’art. 10, o se ce lo impone
+                la legge o un’autorità.
+            </li>
+        </ul>
+
+        <h2>9. Cosa Chi Comanda non fa</h2>
+        <ul>
+            <li>
+                <strong>Non è un registratore di cassa</strong>: non emette lo scontrino né il documento commerciale e
+                non trasmette i corrispettivi. Gli obblighi fiscali del locale restano del Cliente.
+            </li>
+            <li>
+                I pagamenti elettronici al tavolo passano dagli account SumUp o Satispay del Cliente, con i loro
+                contratti; Chi Comanda non riceve né conserva i dati delle carte.
+            </li>
+            <li>
+                Serve una connessione a internet e dispositivi del Cliente con un browser aggiornato. L’app sopporta una
+                connessione instabile, ma non funziona senza rete.
+            </li>
+        </ul>
+
+        <h2>10. Uso consentito</h2>
+        <p>Il Cliente e i suoi Utenti si impegnano a non:</p>
+        <ul>
+            <li>usare il servizio per attività illecite o per contenuti offensivi o che violano diritti altrui;</li>
+            <li>tentare di accedere ai dati di altri locali o di aggirare i limiti e le misure di sicurezza;</li>
+            <li>sovraccaricare il servizio con richieste automatiche, o copiarlo, decompilarlo o rivenderlo.</li>
+        </ul>
+        <p>
+            Il Cliente è responsabile dei contenuti che inserisce (menu, nomi, logo, immagini) e ci autorizza a usarli
+            solo per far funzionare il servizio, per esempio per mostrare il menu pubblico del locale.
+        </p>
+
+        <h2>11. Disponibilità e assistenza</h2>
+        <ul>
+            <li>
+                Facciamo il possibile perché il servizio sia sempre disponibile, ma non possiamo garantire che lo sia
+                senza interruzioni. Gli aggiornamenti si fanno di preferenza nelle ore di minor uso (lunedì o martedì
+                mattina).
+            </li>
+            <li>
+                L’assistenza è via email a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>, nei giorni
+                lavorativi; la guida all’uso è su <a href="/guida">chicomanda.com/guida</a>.
+            </li>
+            <li>
+                Per assistenza e configurazione possiamo entrare nel locale con i poteri di amministratore: ogni nostra
+                azione resta nel registro attività del locale.
+            </li>
+            <li>Il servizio può cambiare nel tempo; se togliamo una funzione importante del tuo piano te lo diciamo prima.</li>
+        </ul>
+
+        <h2>12. Proprietà intellettuale</h2>
+        <p>
+            Il software, il marchio e i contenuti di Chi Comanda sono nostri. Con l’abbonamento ricevi una licenza
+            d’uso non esclusiva e non trasferibile, per la sua durata. I dati che inserisci restano del Cliente.
+        </p>
+
+        <h2>13. Responsabilità</h2>
+        <ul>
+            <li>
+                Non rispondiamo di danni indiretti, come mancati guadagni o perdita di clienti, né di interruzioni dovute
+                alla connessione o ai dispositivi del Cliente, o a servizi di terzi (rete, SumUp, Satispay, Stripe).
+            </li>
+            <li>
+                Fuori dai casi di dolo o colpa grave, la nostra responsabilità complessiva non supera quanto il Cliente ci
+                ha pagato nei 12 mesi precedenti il fatto.
+            </li>
+            <li>Il Cliente ci tiene indenni dalle pretese di terzi dovute all’uso del servizio contrario a queste condizioni.</li>
+        </ul>
+
+        <h2>14. Dati personali</h2>
+        <p>
+            Per i dati degli account, della registrazione e della fatturazione siamo titolari del trattamento, come
+            spiega l’<a href="/privacy">informativa sulla privacy</a>. Per i dati che il Cliente tratta con Chi Comanda
+            (il suo staff, le serate, gli ordini) il Cliente è titolare e noi siamo responsabili del trattamento, secondo
+            l’<a href="/trattamento-dati">accordo sul trattamento dei dati</a>, che fa parte di queste condizioni.
+        </p>
+
+        <h2>15. Modifiche alle condizioni</h2>
+        <p>
+            Se cambiamo queste condizioni pubblichiamo la nuova versione su questa pagina e te lo scriviamo almeno 30
+            giorni prima che entri in vigore, salvo modifiche richieste dalla legge. Se non la accetti puoi disdire
+            prima di quella data; continuando a usare il servizio dopo, la accetti.
+        </p>
+
+        <h2>16. Comunicazioni</h2>
+        <p>
+            Ti scriviamo all’email dell’Amministratore e con avvisi nell’app. Tu puoi scriverci a{' '}
+            <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+        </p>
+
+        <h2>17. Legge applicabile e foro</h2>
+        <p>
+            Queste condizioni sono regolate dalla legge italiana. Per ogni controversia è competente in via esclusiva il
+            foro di <span class:list={{ todo: !LEGAL.court }}>{court}</span>.
+        </p>
+
+        <h2>18. Approvazione specifica</h2>
+        <p>
+            Ai sensi degli articoli 1341 e 1342 del codice civile il Cliente approva specificamente: 4 (chiusura della
+            prova per abuso), 5 (rinnovo automatico e variazione dei prezzi), 6 e 7 (sola lettura e cancellazione dei
+            dati), 8 (assenza di rimborsi, nostro recesso, sospensione immediata), 11 (disponibilità senza garanzia),
+            13 (limitazioni di responsabilità), 15 (modifiche alle condizioni), 17 (foro esclusivo).
+        </p>
+    </article>
+</Base>
+
+<style>
+    .meta {
+        color: var(--ink-soft);
+    }
+</style>

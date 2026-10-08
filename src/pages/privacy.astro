@@ -1,106 +1,176 @@
 ---
 import Base from '../layouts/Base.astro'
-import { OWNER, SITE } from '../site'
+import Provider from '../components/Provider.astro'
+import { LEGAL, SITE } from '../site'
 
-const updated = '8 ottobre 2026'
+// One notice for the site and for the data Chi Comanda controls in the service (sign-up, accounts, billing): the app's
+// PRIVACY_URL. The venues' own data are covered by the data processing agreement (/trattamento-dati). Facts from
+// chi-comanda docs/privacy-data.md: keep in step with it.
 ---
 <Base
     title="Privacy"
-    description="Informativa sul trattamento dei dati personali del sito chicomanda.com: email di contatto, statistiche senza cookie, memoria locale del browser."
+    description="Informativa sul trattamento dei dati personali di Chi Comanda: sito, registrazione dei locali, account, abbonamento e fatturazione."
 >
     <article class="section container prose">
         <span class="eyebrow">Informativa privacy</span>
         <h1>Privacy</h1>
+        <p class="meta">Versione {LEGAL.version}, aggiornata il {LEGAL.date}.</p>
         <p>
-            Questa informativa, resa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR), riguarda
-            il sito <strong>chicomanda.com</strong>. Non riguarda le app dei singoli locali
-            (<em>nome-del-locale</em>.chicomanda.com) né la registrazione di un locale e il suo abbonamento
-            (app.chicomanda.com), che hanno le loro condizioni e la loro informativa, mostrate al momento della
-            registrazione. Ultimo aggiornamento: {updated}.
+            Questa informativa, resa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR), spiega come
+            trattiamo i dati personali di chi visita <strong>chicomanda.com</strong>, di chi registra un locale e di chi
+            usa Chi Comanda con un account.
+        </p>
+        <p>
+            I dati che un locale inserisce per lavorare (il suo staff, le serate, gli ordini) sono del locale, che ne è
+            titolare: noi li trattiamo per suo conto, secondo l’<a href="/trattamento-dati">accordo sul trattamento dei
+            dati</a>. Per quei dati rivolgiti anche al locale per cui lavori.
         </p>
 
         <h2>Titolare del trattamento</h2>
-        <p>
-            {OWNER.name}<br />
-            {OWNER.vat && <>P.IVA {OWNER.vat}<br /></>}
-            {OWNER.address && <>Sede: {OWNER.address}<br /></>}
-            {OWNER.pec && <>PEC: {OWNER.pec}<br /></>}
-            Email: <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>
-        </p>
+        <Provider />
 
-        <h2>Email di contatto</h2>
+        <h2>Registrazione di un locale</h2>
         <p>
-            Se ci scrivi a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> trattiamo i dati che ci mandi
-            (il tuo indirizzo email, il nome e quello che scrivi) solo per risponderti.
+            Quando registri un locale trattiamo: nome del locale, il tuo nome, email, password (conservata solo in
+            forma cifrata non reversibile) oppure, se usi Google, il tuo identificativo Google, nome, email e foto; la
+            versione delle condizioni e dell’informativa che hai accettato, con data e ora; l’indirizzo IP e il tipo di
+            browser al momento della registrazione.
         </p>
         <ul>
             <li>
-                <strong>Base giuridica</strong>: l’esecuzione di misure precontrattuali adottate su tua richiesta
-                (art. 6.1.b GDPR), o il nostro legittimo interesse a rispondere alle domande che riceviamo (art. 6.1.f GDPR).
+                <strong>Finalità e base giuridica</strong>: creare il locale e il tuo account ed erogare il servizio
+                (contratto, art. 6.1.b GDPR); conservare la prova dell’accettazione e proteggere il servizio dagli abusi
+                (legittimo interesse, art. 6.1.f).
             </li>
             <li>
-                <strong>Come</strong>: l’indirizzo è inoltrato da Cloudflare Email Routing alla nostra casella di posta,
-                dove il messaggio resta.
+                <strong>Protezione dagli abusi</strong>: la pagina usa Cloudflare Turnstile, che analizza alcuni segnali
+                tecnici del browser solo per distinguere le persone dai programmi automatici, senza cookie di
+                profilazione. Il controllo non viene conservato.
             </li>
             <li>
-                <strong>Conservazione</strong>: per il tempo necessario a gestire la richiesta e, se non diventi
-                cliente, non oltre 12 mesi dall’ultimo contatto.
+                <strong>Conservazione</strong>: una registrazione non confermata viene cancellata dopo 7 giorni; IP e
+                browser della registrazione dopo 12 mesi; il resto per la vita dell’account.
             </li>
-            <li>Non usiamo questi dati per newsletter o marketing senza un tuo consenso separato.</li>
         </ul>
 
-        <h2>Dati di navigazione e statistiche</h2>
+        <h2>Account di chi usa Chi Comanda</h2>
         <p>
-            Il sito è ospitato su Cloudflare Pages. Come ogni server web, Cloudflare tratta i dati tecnici necessari
-            a consegnare le pagine e a proteggerle dagli attacchi (per esempio indirizzo IP, browser, pagina
-            richiesta), per il tempo strettamente necessario.
-        </p>
-        <p>
-            Per sapere quante persone visitano il sito usiamo Cloudflare Web Analytics, che <strong>non usa cookie</strong>,
-            non identifica i singoli visitatori e ci mostra solo dati aggregati (pagine viste, Paese, tipo di
-            dispositivo).
-        </p>
-
-        <h2>Cookie e memoria del browser</h2>
-        <p>
-            Il sito <strong>non usa cookie</strong>, né propri né di terze parti, e per questo non ti chiede alcun
-            consenso. Usa invece la memoria locale del tuo browser (<em>localStorage</em>), che resta sul tuo
-            dispositivo e non ci viene mai inviata, per due comodità:
+            Per ogni persona che entra in Chi Comanda (amministratori e staff) trattiamo i dati dell’account: nome,
+            email, password cifrata o identificativo Google, foto del profilo se presente, date di creazione e di ultimo
+            accesso, i locali in cui lavora con i suoi ruoli. Per la sicurezza registriamo inoltre gli accessi e i
+            tentativi falliti, con indirizzo IP e tipo di dispositivo.
         </p>
         <ul>
-            <li>il tema chiaro o scuro, se lo scegli con l’apposito pulsante;</li>
             <li>
-                l’ultimo locale in cui sei entrato dalla pagina <a href="/accedi">Accedi</a>, per mostrarti il
-                pulsante “Entra in …” la volta successiva. Puoi cancellarlo con “Non è il tuo locale? Cambia”.
+                <strong>Finalità e base giuridica</strong>: farti accedere e lavorare nei locali che ti hanno invitato
+                (contratto, art. 6.1.b, o legittimo interesse del locale e nostro, art. 6.1.f); proteggere gli account da
+                accessi non autorizzati (legittimo interesse, art. 6.1.f).
+            </li>
+            <li>
+                <strong>Conservazione</strong>: i dati dell’account finché l’account esiste; il registro degli accessi 24
+                mesi; i collegamenti per reimpostare la password 24 ore; la sessione 30 giorni dall’ultimo uso o fino
+                all’uscita. Se esci da tutti i locali, l’account viene chiuso e reso anonimo dopo 12 mesi.
+            </li>
+            <li>
+                <strong>Notifiche push</strong>: se le attivi, conserviamo l’indirizzo tecnico del tuo dispositivo per
+                inviartele, finché non le disattivi. Il contenuto viaggia cifrato.
             </li>
         </ul>
+
+        <h2>Abbonamento e fatturazione</h2>
         <p>
-            Per verificare che un locale esista, la pagina Accedi contatta l’indirizzo di quel locale
-            (<em>nome-del-locale</em>.chicomanda.com) prima di portarti lì.
+            Per l’abbonamento di un locale trattiamo i dati di fatturazione (ragione sociale o nome, partita IVA o codice
+            fiscale, indirizzo, codice SDI o PEC, email per le fatture) e lo stato dei pagamenti. I dati della carta li
+            inserisci direttamente su Stripe e non li riceviamo mai.
+        </p>
+        <ul>
+            <li>
+                <strong>Finalità e base giuridica</strong>: gestire l’abbonamento e i pagamenti (contratto, art. 6.1.b);
+                emettere e conservare le fatture (obbligo di legge, art. 6.1.c).
+            </li>
+            <li>
+                <strong>Conservazione</strong>: per la durata dell’abbonamento; fatture e documenti contabili per 10 anni,
+                come richiede la legge.
+            </li>
+        </ul>
+
+        <h2>Email del servizio</h2>
+        <p>
+            Ti mandiamo solo email legate al servizio: conferma della registrazione, inviti, recupero della password,
+            avvisi su prova, pagamenti, sospensione e cancellazione del locale. Non mandiamo newsletter o pubblicità senza
+            un tuo consenso separato, che oggi non chiediamo.
+        </p>
+
+        <h2>Se ci scrivi</h2>
+        <p>
+            Se ci scrivi a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> trattiamo i dati del messaggio
+            solo per risponderti (misure precontrattuali o legittimo interesse, art. 6.1.b e f). L’indirizzo è inoltrato
+            da Cloudflare Email Routing alla nostra casella di posta. Conserviamo i messaggi il tempo necessario e, se
+            non diventi cliente, non oltre 12 mesi dall’ultimo contatto.
+        </p>
+
+        <h2>Visite al sito chicomanda.com</h2>
+        <p>
+            Il sito è ospitato su Cloudflare Pages, che tratta i dati tecnici necessari a consegnare le pagine e
+            proteggerle dagli attacchi (indirizzo IP, browser, pagina richiesta) per il tempo strettamente necessario.
+            Per contare le visite usiamo Cloudflare Web Analytics, che <strong>non usa cookie</strong> e ci mostra solo dati
+            aggregati.
+        </p>
+        <p>
+            Il sito <strong>non usa cookie</strong> e non chiede consensi. Usa la memoria locale del browser
+            (<em>localStorage</em>), che non ci viene inviata, per ricordare il tema chiaro o scuro e l’ultimo locale in
+            cui sei entrato dalla pagina <a href="/accedi">Accedi</a>. Per verificare che un locale esista, la pagina
+            Accedi contatta l’indirizzo di quel locale prima di portarti lì. L’app usa invece un cookie tecnico di
+            sessione, necessario per restare collegati.
         </p>
 
         <h2>A chi comunichiamo i dati</h2>
-        <p>I dati sono trattati da noi e, per nostro conto, dai fornitori nominati responsabili del trattamento:</p>
+        <p>Trattiamo i dati noi e, per nostro conto, questi fornitori, nominati responsabili del trattamento:</p>
         <ul>
-            <li><strong>Cloudflare, Inc.</strong>: hosting del sito, Web Analytics, inoltro delle email di contatto.</li>
+            <li><strong>Railway Corporation</strong>: server e database dell’applicazione, nei Paesi Bassi (UE);</li>
+            <li><strong>Cloudflare, Inc.</strong>: sito, DNS, backup cifrati, Turnstile, inoltro delle email e del login con Google;</li>
+            <li><strong>Mailjet SAS</strong> (gruppo Sinch, UE): invio delle email del servizio;</li>
+            <li><strong>Stripe Payments Europe, Ltd.</strong>: pagamenti degli abbonamenti;</li>
+            <li><strong>Functional Software, Inc.</strong> (Sentry): segnalazione degli errori tecnici, senza dati degli utenti;</li>
+            <li><strong>Google Ireland Limited</strong>: accesso con Google, solo per chi lo usa;</li>
+            <li>il nostro consulente fiscale, per le fatture.</li>
         </ul>
         <p>
-            Cloudflare può trattare dati negli Stati Uniti: il trasferimento avviene sulla base dell’EU-US Data
-            Privacy Framework, a cui Cloudflare aderisce, e delle clausole contrattuali standard della Commissione
-            europea. Non vendiamo né cediamo i dati a terzi.
+            Alcuni fornitori hanno sede negli Stati Uniti: il trasferimento avviene sulla base del EU-US Data Privacy
+            Framework, se il fornitore vi aderisce, o delle clausole contrattuali standard della Commissione europea. Non
+            vendiamo né cediamo i dati a terzi.
+        </p>
+
+        <h2>Sicurezza e backup</h2>
+        <p>
+            I collegamenti sono cifrati, le password conservate in forma non reversibile e i dati di ogni locale separati
+            da quelli degli altri. I backup giornalieri sono cifrati e cancellati dopo 30 giorni: un dato cancellato può
+            restarvi fino ad allora.
         </p>
 
         <h2>I tuoi diritti</h2>
         <p>
-            Puoi chiederci in ogni momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne il
-            trattamento, riceverli in formato portabile o opporti al trattamento (articoli 15-22 GDPR), scrivendo a{' '}
+            Puoi accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, riceverli in formato portabile
+            o opporti al trattamento (articoli 15-22 GDPR). Dall’app puoi già, nel tuo profilo, scaricare i tuoi dati ed
+            eliminare il tuo account; per tutto il resto scrivi a{' '}
             <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>. Hai anche il diritto di proporre reclamo al
             Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>).
+        </p>
+        <p>
+            Il conferimento dei dati della registrazione e della fatturazione è necessario per usare il servizio e per
+            l’abbonamento. Non prendiamo decisioni automatizzate che producono effetti giuridici su di te.
         </p>
 
         <h2>Modifiche</h2>
         <p>
-            Se cambiamo il modo in cui trattiamo i dati aggiorniamo questa pagina e la data in alto.
+            Se cambiamo il modo in cui trattiamo i dati aggiorniamo questa pagina, con la sua versione e la data in alto,
+            e per i cambiamenti importanti avvisiamo gli amministratori dei locali per email.
         </p>
     </article>
 </Base>
+
+<style>
+    .meta {
+        color: var(--ink-soft);
+    }
+</style>
