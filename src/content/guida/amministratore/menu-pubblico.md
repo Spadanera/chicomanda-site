@@ -32,6 +32,20 @@ Spegnendo la funzione la pagina sparisce subito: chi la apre legge «Menu non di
 
 Le modifiche (un prezzo, un esaurito) compaiono sulla pagina entro un paio di minuti.
 
+## Il tuo menu in PDF
+
+Se hai già un menu impaginato (dal grafico, o fatto da te), puoi mostrare quello al posto del menu dell'app:
+
+1. In **Impostazioni**, riquadro **Il tuo menu in PDF**, scegli il file (un PDF, al massimo 10 MB) e tocca
+   **Carica**.
+2. Da quel momento chi inquadra il QR vede le pagine del tuo PDF, sotto il logo e il nome del locale (e il tavolo,
+   se il QR è di un tavolo), con il link per aprirlo a parte.
+3. Per cambiarlo carica il nuovo PDF con **Sostituisci il PDF**; per tornare al menu dell'app tocca **Torna al menu
+   dell'app**.
+
+Con il PDF, prezzi, esauriti e allergeni sono quelli scritti nel PDF: l'app non li aggiorna. Tienilo aggiornato tu, e
+ricordati che gli allergeni vanno indicati (o detti dal personale). I QR non cambiano.
+
 ## Quale menu
 
 In **Menu mostrato**:
@@ -62,6 +76,15 @@ Nel riquadro tocca **Stampa il QR**.
 3. **Logo al centro del QR**: c'è se il locale ha un logo (vedi [Impostazioni](/guida/amministratore/impostazioni#logo)).
 4. Tocca **Stampa**. Nella finestra di stampa scegli **A4**, **scala 100%** (non «adatta alla pagina») e niente
    margini aggiuntivi.
+
+### Scaricare il QR come immagine
+
+Se preferisci farti i cartoncini da te (o farli fare a un grafico), tocca **Scarica PNG**: scarichi solo il QR, nero
+su **sfondo trasparente**, grande abbastanza per la stampa (circa 1600 pixel di lato), col logo al centro se è acceso.
+Con **Un QR per tavolo** acceso, scegli dall'elenco il tavolo (o *Tutto il locale*).
+
+Mettilo su un fondo chiaro e lascia un po' di margine vuoto attorno: su un fondo scuro o troppo decorato il telefono
+non lo legge. Prova sempre col telefono prima di stampare.
 
 Consigli:
 
