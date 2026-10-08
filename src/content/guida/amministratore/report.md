@@ -43,6 +43,11 @@ Una serata (o un periodo) in un colpo d'occhio:
 - **Durata**: dal primo all'ultimo ordine. Per un periodo è la durata media.
 - **Permanenza media al tavolo**: da quando il tavolo è aperto a quando è chiuso.
 - **Incassi per metodo**: contanti, carta, Satispay, buoni pasto…, con la quota di ciascuno.
+- **IVA per aliquota**: per ogni aliquota il netto (IVA inclusa), la parte di sconti, l'**imponibile** e l'**IVA**.
+  Ogni prodotto conta con l'aliquota che aveva quando è stato ordinato; lo sconto di un tavolo si divide tra le sue
+  aliquote in proporzione a quanto valgono. *Aliquota non registrata* sono i prodotti ordinati prima che l'app
+  registrasse l'aliquota: per quelle serate fa fede il conto del commercialista. Il CSV del riepilogo ha le stesse
+  righe.
 
 Quando guardi una serata sola, sotto i numeri principali vedi il confronto con la **media delle 4 serate prima** e con
 la **serata di una settimana prima** (se c'era), per esempio *+12% vs media di 4 serate*.
@@ -75,6 +80,8 @@ Cosa si vende e cosa no.
   2 volte (puoi scegliere *mai venduti*, *al massimo 1*, *5*, *10*). L'etichetta **non disponibile** indica i
   prodotti segnati non disponibili nel menu: non si potevano ordinare.
 - **Consumazioni minime**: quante e che quota dell'incasso fanno.
+- **Opzioni più scelte**: le varianti e le aggiunte (vedi [Opzioni](/guida/amministratore/opzioni)) scelte più spesso e quanto hanno
+  reso i loro supplementi.
 
 Con **Persona** vedi i prodotti degli ordini presi da quel cameriere.
 

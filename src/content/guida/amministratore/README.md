@@ -16,10 +16,10 @@ sinistra.
 |---|---|---|
 | **Eventi** | Crei, apri e chiudi le serate; vedi il resoconto e il riepilogo | [Eventi](/guida/amministratore/eventi) |
 | **Tavoli** | Disegni le sale e la piantina dei tavoli | [Il locale](/guida/amministratore/locale#tavoli) |
-| **Menu** | Menu, categorie e prodotti, con prezzi e disponibilità | [Il locale](/guida/amministratore/locale#menu) |
+| **Menu** | Menu, categorie (e il loro ordine), prodotti con prezzi, IVA, descrizioni e allergeni, opzioni; import ed export CSV | [Il locale](/guida/amministratore/locale#menu), [Opzioni](/guida/amministratore/opzioni), [CSV](/guida/amministratore/menu-csv) |
 | **Destinazioni** | Le postazioni (bar, cucina…) e i tempi di attesa | [Il locale](/guida/amministratore/locale#destinazioni) |
 | **Pagamenti** | I metodi di pagamento della cassa (funzione opzionale) | [Impostazioni e pagamenti](/guida/amministratore/impostazioni#pagamenti), [SumUp](/guida/amministratore/pagamenti-sumup), [Satispay](/guida/amministratore/pagamenti-satispay) |
-| **Impostazioni** | Nome, colori e logo del locale | [Impostazioni e pagamenti](/guida/amministratore/impostazioni) |
+| **Impostazioni** | Nome, colori e logo del locale, aliquota IVA predefinita, funzioni opzionali (uscite, menu pubblico e QR code) | [Impostazioni e pagamenti](/guida/amministratore/impostazioni), [Menu pubblico e QR code](/guida/amministratore/menu-pubblico) |
 | **Utenti** | Inviti e ruoli dello staff | [Persone](/guida/amministratore/persone) |
 | **Report** | Incassi, prodotti, orari, sconti, personale e postazioni, per serata o per periodo | [Report](/guida/amministratore/report) |
 | **Registro** | Chi ha fatto cosa: ordini, cassa, menu, serate, staff, accessi | [Registro attività](/guida/amministratore/registro-attivita) |
@@ -27,7 +27,8 @@ sinistra.
 ## Prima serata: da dove partire
 
 1. **Destinazioni**: crea le postazioni (es. *Bar*, *Cucina*).
-2. **Menu**: controlla categorie e prodotti; per ogni prodotto scegli prezzo e destinazione.
+2. **Menu**: controlla categorie e prodotti; per ogni prodotto scegli prezzo e destinazione, se vuoi descrizione,
+   allergeni e opzioni. Tanti prodotti si caricano più in fretta da un file: [Import ed export del menu](/guida/amministratore/menu-csv).
 3. **Tavoli**: disegna le sale e metti i tavoli.
 4. **Utenti**: invita lo staff con i ruoli giusti.
 5. **Eventi**: crea la serata e aprila.

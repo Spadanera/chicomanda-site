@@ -41,12 +41,34 @@ Nella parte **DA FARE**, accanto a ogni prodotto:
 I prodotti pronti passano in **COMPLETATI**. Se hai sbagliato, tocca la **freccia verso l'alto** per riportarli in
 *DA FARE*.
 
-Le note del cameriere (es. *senza cipolla*) compaiono sotto il prodotto, in evidenza.
+Le note del cameriere (es. *senza cipolla*) compaiono sotto il prodotto, in evidenza. Le **opzioni** scelte (es.
+*Al sangue, Patatine*) sono sotto il nome, in colore: lo stesso piatto con opzioni diverse è su righe separate.
 
 ## Completare tutto l'ordine
 
 Quando l'ordine è pronto, tocca in basso a destra la **doppia spunta** (sul telefono) o **COMPLETA** (su tablet e
 computer), poi **Conferma**. Leggi «Ordine completato».
+
+## Esauriti
+
+Finito qualcosa? Tocca **ESAURITI** in cima alla lista.
+
+<img src="/guida/img/esauriti.png" alt="Finestra Esauriti stasera" width="280">
+
+- Accendi l'interruttore accanto al prodotto (o all'opzione, es. *Patatine*): i camerieri lo vedono subito grigio con
+  la scritta *Esaurito* e non possono ordinarlo; se ci provano da un ordine in attesa, l'app glielo dice.
+- Quando torna disponibile, spegni l'interruttore.
+- Vale solo per la serata: alla chiusura dell'evento tutto torna disponibile da solo.
+
+Lo stesso pulsante ce l'hanno la cassa e l'amministratore (nella lista dei prodotti del menu).
+
+## Le uscite in cucina
+
+> **Funzione opzionale** · Solo se il locale lavora per uscite e la tua postazione è segnata «per uscite».
+
+La cucina vede subito la 1ª uscita di ogni tavolo. La 2ª e la 3ª arrivano quando il cameriere (o la cassa) le manda:
+in basso compare **2ª uscita · Tavolo …**, l'ordine si aggiorna e, con le notifiche attive, arriva anche sul telefono.
+Nel dettaglio i piatti della 2ª e della 3ª hanno l'etichetta **2ª uscita** / **3ª uscita**.
 
 ## Fare un ordine dal bar
 

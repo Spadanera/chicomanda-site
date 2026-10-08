@@ -5,9 +5,23 @@
 ## Impostazioni
 
 Nome, logo e colori con cui l'app si presenta allo staff: nella barra in alto, nella pagina di accesso e
-nell'icona dell'app installata sul telefono.
+nell'icona dell'app installata sul telefono. Qui accendi anche le funzioni opzionali e scegli l'aliquota IVA
+predefinita.
 
 <img src="/guida/img/admin-impostazioni.png" alt="Impostazioni del locale" width="280">
+
+### Funzioni opzionali
+
+Il riquadro **Funzioni opzionali** elenca le funzioni nuove che il locale può usare. **Nascono spente**: finché non le
+accendi, il locale funziona come sempre.
+
+- **Uscite**: la cucina riceve le portate una alla volta (vedi [Cameriere](/guida/cameriere#le-uscite)). Dopo averla
+  accesa, in [Destinazioni](/guida/amministratore/locale#destinazioni) segna **Lavora per uscite** sulla cucina.
+- **Menu pubblico**: il menu del locale su una pagina per i clienti, con i QR code da stampare (vedi
+  [Menu pubblico e QR code](/guida/amministratore/menu-pubblico)).
+
+Tocca l'interruttore: vale subito, si salva da solo e si può spegnere in qualsiasi momento. Se il riquadro non c'è,
+il locale non ha queste funzioni: chiedile a chi gestisce il servizio.
 
 ### Nome e colori
 
@@ -17,6 +31,10 @@ nell'icona dell'app installata sul telefono.
 3. Tocca **Salva**.
 
 Un campo vuoto usa il valore predefinito di Chi Comanda.
+
+**Aliquota IVA predefinita**: quella dei prodotti a cui non ne hai data una e dei prodotti fuori menu. Se non la
+cambi è il 10%, quella di bar e ristoranti per cibi e bevande somministrati. Cambiarla vale per gli ordini da quel
+momento: quelli già fatti tengono l'aliquota con cui sono stati presi. Nel dubbio chiedi al commercialista.
 
 ### Logo
 

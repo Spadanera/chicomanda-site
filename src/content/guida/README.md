@@ -13,7 +13,7 @@ Questa guida spiega come usarla, ruolo per ruolo.
 | Cameriere | [Cameriere](/guida/cameriere) |
 | Barista o in cucina | [Barista e cucina](/guida/barista) |
 | Alla cassa | [Cassa](/guida/cassa) e [Pagamenti](/guida/pagamenti) |
-| Amministratore del locale | [Amministratore](/guida/amministratore) |
+| Amministratore del locale | [Amministratore](/guida/amministratore), con [Opzioni](/guida/amministratore/opzioni), [Import ed export del menu](/guida/amministratore/menu-csv) e [Menu pubblico e QR code](/guida/amministratore/menu-pubblico) |
 
 Per tutti:
 
@@ -31,6 +31,11 @@ Per tutti:
 - **Destinazione** o **postazione**: dove viene preparato un prodotto, per esempio *Bar* o *Cucina*. Ogni ordine
   arriva diviso alle postazioni giuste.
 - **Fuori menu**: un prodotto che non è nel menu, con nome e prezzo scritti al momento.
+- **Opzioni**: le scelte di un prodotto (cottura, impasto, aggiunte), alcune con un supplemento.
+- **Esaurito**: un prodotto finito per stasera. Il cameriere lo vede grigio; alla chiusura della serata torna
+  disponibile da solo.
+- **Uscita**: una portata (1ª, 2ª, 3ª). Nei locali che lavorano per uscite la cucina riceve la successiva quando il
+  cameriere la manda.
 - **Ruoli**: *Cameriere*, *Barista*, *Cassiere*, *Amministratore*. Una persona può averne più di uno, e ruoli diversi
   in locali diversi.
 

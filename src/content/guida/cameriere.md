@@ -28,7 +28,15 @@ La piantina si aggiorna da sola quando un collega apre un tavolo («Tavoli aggio
 4. Per trovare un prodotto più in fretta, scrivi nel campo **Cerca** in alto.
 5. Quando hai finito, apri il riepilogo (vedi sotto) e invia.
 
-<img src="/guida/img/cameriere-prodotti.png" alt="Menu con i pulsanti matita e più" width="280">
+<img src="/guida/img/cameriere-prodotti.png" alt="Menu con descrizioni, allergeni e un prodotto esaurito" width="280">
+
+Sotto il nome di un prodotto possono comparire:
+
+- la **descrizione** (ingredienti, formato), se l'amministratore l'ha scritta;
+- gli **allergeni**, in arancione con il numero ufficiale (es. *1 · Glutine*), e la scritta *può contenere tracce di…*.
+  Se un cliente chiede degli allergeni, è qui che guardi; se un prodotto non ne ha indicati, chiedi in cucina;
+- **Esaurito**: il bar o la cucina l'ha finito per stasera. Il prodotto è grigio e i pulsanti non funzionano. Si
+  aggiorna da solo, anche mentre stai prendendo l'ordine.
 
 In basso vedi sempre quanti prodotti hai aggiunto per ogni categoria del menu (per esempio bevande e cibo, con la
 loro icona; i fuori menu a parte) e il totale in euro.
@@ -44,6 +52,40 @@ Per una richiesta particolare («senza cipolla», «poco ghiaccio»):
 <img src="/guida/img/cameriere-nota.png" alt="Finestra della nota" width="280">
 
 La nota arriva al bar o in cucina insieme al prodotto, in evidenza.
+
+### Opzioni (cottura, impasto, aggiunte…)
+
+Alcuni prodotti hanno delle scelte: toccando **+** (o la matita) si apre una finestra con le loro opzioni.
+
+<img src="/guida/img/cameriere-opzioni.png" alt="Finestra delle opzioni di un prodotto" width="280">
+
+1. Per ogni gruppo leggi accanto al nome cosa serve: *obbligatoria, una sola* (scegline una), *facoltativa, fino a 3*…
+   Se una scelta obbligatoria manca, il gruppo è in rosso e **Aggiungi** resta spento.
+2. Accanto alle opzioni a pagamento c'è il supplemento (es. *+1,50 €*): il prezzo in fondo alla finestra si aggiorna.
+   Un'opzione esaurita è grigia.
+3. Se serve scrivi una **Nota**, poi tocca **Aggiungi**.
+
+Nel riepilogo, al bar e in cassa le opzioni scelte compaiono sotto il nome del prodotto. Lo stesso prodotto con opzioni
+diverse è su due righe.
+
+Se un ordine resta in attesa per la connessione e nel frattempo le opzioni cambiano (per esempio un'aggiunta è stata
+tolta o è finita), quando parte viene rifiutato con un messaggio che dice quale prodotto rifare: vedi
+[Connessione instabile](/guida/connessione-instabile).
+
+### Le uscite
+
+Se il locale lavora **per uscite** (funzione opzionale, vedi [Funzioni opzionali](/guida/funzioni-opzionali)), in cima al
+menu c'è **Uscita 1ª · 2ª · 3ª**.
+
+<img src="/guida/img/cameriere-uscite.png" alt="Scelta dell'uscita e piatti in attesa" width="280">
+
+- Scegli l'uscita **prima** di aggiungere i piatti: vale per quelli che aggiungi da quel momento. Di solito la 1ª sono
+  gli antipasti, la 2ª i secondi, la 3ª i dolci.
+- Vale solo per la cucina (le postazioni che lavorano per uscite): le bevande vanno al bar subito, come sempre.
+- La cucina vede subito la 1ª uscita; la 2ª e la 3ª restano in attesa.
+- Quando il tavolo è pronto per la portata successiva, apri il tavolo: in alto leggi *… piatti della 2ª uscita in
+  attesa* e tocca **Manda la 2ª**. La cucina la vede subito e riceve un avviso. Lo stesso pulsante ce l'ha la cassa.
+- Sulla piantina i tavoli con un'uscita ancora da mandare hanno l'etichetta **2ª in attesa**.
 
 ### Prodotti fuori menu
 

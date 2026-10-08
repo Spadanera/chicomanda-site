@@ -14,6 +14,7 @@ computer è sempre visibile.
 Ogni tavolo mostra quanti prodotti ha, per categoria. I tavoli chiusi restano in lista, sbiaditi.
 
 Con **NUOVO ORDINE** in cima alla lista puoi fare un ordine come un cameriere (vedi [Cameriere](/guida/cameriere)).
+Con **ESAURITI** segni i prodotti finiti per stasera, come al bar (vedi [Barista e cucina](/guida/barista#esauriti)).
 
 ## Il conto di un tavolo
 
@@ -26,6 +27,16 @@ Tocca un tavolo. Vedi:
 - **DA PAGARE**: i prodotti ancora da pagare;
 - **PAGATI**: i prodotti già pagati, barrati;
 - in basso, **Totale**: il totale del tavolo.
+
+Le opzioni scelte (es. *Integrale, Patatine*) compaiono sotto il nome del prodotto: il prezzo comprende già i
+supplementi.
+
+### Mandare la prossima uscita
+
+> **Funzione opzionale** · Solo se il locale lavora per uscite.
+
+Se il tavolo ha piatti di un'uscita successiva ancora in attesa, sopra il conto leggi *… piatti della 2ª uscita in
+attesa*: tocca **Manda la 2ª** e la cucina la vede subito. Vedi [Cameriere](/guida/cameriere#le-uscite).
 
 ### Togliere un prodotto dal conto
 
@@ -72,6 +83,9 @@ Quando un cliente paga solo una parte (per esempio "ognuno il suo"):
 <img src="/guida/img/cassa-parziale.png" alt="Prodotti spuntati per un pagamento parziale" width="280">
 
 I prodotti pagati passano in **PAGATI**; il tavolo resta aperto per il resto.
+
+Se con i pagamenti parziali è stato pagato tutto, il tavolo resta comunque aperto (si possono ancora aggiungere
+ordini). Per chiuderlo tocca **CHIUDI TAVOLO**: l'app chiede solo conferma, senza un nuovo pagamento.
 
 ## Fare uno sconto
 
