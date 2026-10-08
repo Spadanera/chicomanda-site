@@ -1,5 +1,5 @@
 ---
-import { NAV } from '../site'
+import { NAV, SITE } from '../site'
 import Logo from './Logo.astro'
 import ThemeSwitch from './ThemeSwitch.astro'
 ---
@@ -16,8 +16,8 @@ import ThemeSwitch from './ThemeSwitch.astro'
 
         <div class="actions">
             <a class="login" href="/accedi">Accedi</a>
-            <a class="btn btn-primary demo" href="/demo">
-                <span class="long">Richiedi una demo</span><span class="short">Demo</span>
+            <a class="btn btn-primary cta" href={SITE.signupUrl}>
+                <span class="long">Prova gratis</span><span class="short">Prova</span>
             </a>
             <ThemeSwitch />
         </div>
@@ -67,6 +67,7 @@ import ThemeSwitch from './ThemeSwitch.astro'
 
     .nav a,
     .login {
+        white-space: nowrap;
         color: var(--ink);
         text-decoration: none;
         font-weight: 500;
@@ -89,7 +90,7 @@ import ThemeSwitch from './ThemeSwitch.astro'
         padding: 10px 4px;
     }
 
-    .demo {
+    .cta {
         min-height: 44px;
         padding: 10px 16px;
     }
@@ -114,7 +115,8 @@ import ThemeSwitch from './ThemeSwitch.astro'
         }
     }
 
-    @media (min-width: 960px) {
+    /* Five sections, Accedi and the button fit on one line from here */
+    @media (min-width: 1080px) {
         .nav {
             display: flex;
         }

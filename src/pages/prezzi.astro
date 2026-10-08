@@ -1,0 +1,440 @@
+---
+import Base from '../layouts/Base.astro'
+import DecoIcon from '../components/DecoIcon.astro'
+import { PRICING, SITE } from '../site'
+
+// Every rule below is what the app does (chi-comanda docs/saas.md, guide amministratore/abbonamento.md and
+// registrazione.md): keep them in step. Prices are Stripe's (scripts/stripe-setup.mjs), VAT excluded.
+
+const euro = (amount: number) => `${amount.toLocaleString('it-IT')} €`
+const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Domanda su Chi Comanda')}`
+
+const always = [
+    'Serate ed eventi, con un menu per ogni serata',
+    'Sale e tavoli disegnati come nel locale',
+    'Menu e catalogo: opzioni, allergeni, IVA, esauriti, import da Excel',
+    'Schermate di bar e cucina, con l’avviso per gli ordini in attesa',
+    'Cassa: conti dei tavoli, pagamenti parziali, sconti',
+    'Riepilogo della serata, report e registro delle attività',
+    'Staff e ruoli, senza limiti di persone o di telefoni',
+    'Funziona anche quando la connessione va e viene',
+]
+
+const trial = [
+    {
+        title: 'Ti registri',
+        text: 'Nome del locale, il tuo nome, email e password, oppure Google. Apri il link che ti arriva per email entro 24 ore: il locale è pronto e tu ne sei l’amministratore.',
+    },
+    {
+        title: `${PRICING.trialDays} giorni con tutto`,
+        text: 'Tutte le funzioni del piano Pro, senza carta di credito. Una configurazione guidata ti porta dai tavoli al menu, allo staff, fino alla prima serata.',
+    },
+    {
+        title: 'Scegli il piano quando vuoi',
+        text: 'Da Amministrazione → Abbonamento: dati di fatturazione, piano, carta. I giorni di prova che restano non si perdono: il primo pagamento parte alla fine della prova.',
+    },
+    {
+        title: 'Se non scegli, niente sorprese',
+        text: 'Una settimana e un giorno prima della fine ti avvisiamo per email. Finita la prova il locale resta consultabile in sola lettura, con tutti i suoi dati: scegli un piano e torna operativo subito.',
+    },
+]
+
+const faq = [
+    {
+        q: 'Serve la carta di credito per provarlo?',
+        a: `No. La prova dura ${PRICING.trialDays} giorni e non chiede nessun dato di pagamento. Li inserisci solo se scegli un piano.`,
+    },
+    {
+        q: 'Come pago?',
+        a: 'Con carta, sulla pagina sicura di Stripe, ogni mese o ogni anno. Da “Gestisci l’abbonamento” cambi carta, passi da Base a Pro (o viceversa) e scarichi le fatture.',
+    },
+    {
+        q: 'Ricevo la fattura elettronica?',
+        a: 'Sì. Prima di scegliere il piano inserisci i dati di fatturazione: ragione sociale o nome, partita IVA o codice fiscale, indirizzo e codice destinatario SDI o PEC.',
+    },
+    {
+        q: 'Posso disdire?',
+        a: 'Quando vuoi, dalla pagina dell’abbonamento, senza vincoli. La disdetta vale alla fine del periodo già pagato: fino ad allora il locale funziona normalmente.',
+    },
+    {
+        q: 'E se un pagamento non va a buon fine?',
+        a: `Il locale continua a funzionare per ${PRICING.graceDays} giorni e ti avvisiamo per email. Aggiorna la carta e tutto torna normale. Dopo i ${PRICING.graceDays} giorni il locale passa in sola lettura.`,
+    },
+    {
+        q: 'Il locale può fermarsi durante il servizio?',
+        a: 'No. Se la sospensione arriva mentre una serata è aperta, la serata continua fino alla chiusura; intanto non se ne possono aprire di nuove.',
+    },
+    {
+        q: 'Cosa succede ai miei dati se smetto?',
+        a: `In sola lettura menu, serate passate e report restano consultabili, e puoi scaricare l’archivio completo del locale in qualsiasi momento. Dopo ${PRICING.readOnlyDays} giorni l’abbonamento si chiude; dopo altri ${PRICING.deletionDays} i dati vengono cancellati, con un avviso per email 14 giorni prima.`,
+    },
+    {
+        q: 'Ho più di un locale.',
+        a: 'Ogni locale ha il suo abbonamento e lo staff entra in tutti con lo stesso account. La prova gratuita è una per account: un secondo locale registrato da te parte senza prova.',
+    },
+    {
+        q: 'Chi Comanda sostituisce il registratore di cassa?',
+        a: 'No. Gestisce ordini, comande e conti dei tavoli, ma non emette lo scontrino o il documento commerciale e non si collega al registratore telematico: quello resta come oggi.',
+    },
+    {
+        q: 'Una catena, un gruppo o un indirizzo tutto vostro?',
+        a: 'Per più locali insieme o un’installazione dedicata (nome-del-locale.chicomanda.com, con i propri dati separati) scrivici: troviamo la soluzione giusta.',
+    },
+]
+
+const structuredData = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: SITE.name,
+        url: SITE.url,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web, Android, iOS',
+        inLanguage: 'it',
+        offers: PRICING.plans.map(plan => ({
+            '@type': 'Offer',
+            name: `${SITE.name} ${plan.name}`,
+            price: plan.monthly,
+            priceCurrency: 'EUR',
+            priceSpecification: { '@type': 'UnitPriceSpecification', price: plan.monthly, priceCurrency: 'EUR', unitCode: 'MON', valueAddedTaxIncluded: false },
+        })),
+    },
+]
+---
+<Base
+    title="Prezzi e prova gratuita"
+    description={`Prova Chi Comanda gratis per ${PRICING.trialDays} giorni, senza carta. Poi Base a ${PRICING.plans[0].monthly} € o Pro a ${PRICING.plans[1].monthly} € al mese + IVA, disdici quando vuoi.`}
+    structuredData={structuredData}
+>
+    <section class="section container intro">
+        <span class="eyebrow">Prezzi e prova gratuita</span>
+        <h1>Provalo gratis per {PRICING.trialDays} giorni</h1>
+        <p class="lead">
+            Registri il tuo locale da solo, in due minuti, e lo usi subito con tutte le funzioni. Senza carta di credito:
+            scegli un piano solo se ti convince.
+        </p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href={SITE.signupUrl}>Registra il tuo locale</a>
+            <a class="btn btn-ghost" href="#prova">Come funziona la prova</a>
+        </div>
+    </section>
+
+    <section class="section plans-section" aria-labelledby="piani-title">
+        <div class="container">
+            <h2 id="piani-title" class="visually-hidden">Piani</h2>
+            <ul class="plans" role="list">
+                {PRICING.plans.map(plan => (
+                    <li class:list={['card', 'plan', { featured: plan.id === 'pro' }]}>
+                        <h3>{plan.name}</h3>
+                        <p class="for">{plan.for}</p>
+                        <p class="price">
+                            <span class="amount">{euro(plan.monthly)}</span>
+                            <span class="per">al mese + IVA</span>
+                        </p>
+                        <p class="yearly">
+                            oppure {euro(plan.monthly * PRICING.yearlyMonths)} l’anno + IVA:{' '}
+                            {12 - PRICING.yearlyMonths} mesi in regalo
+                        </p>
+                        <ul class="checks" role="list">
+                            {plan.features.map(feature => <li><DecoIcon name="mdi-check" size={20} /> {feature}</li>)}
+                        </ul>
+                        <a class:list={['btn', plan.id === 'pro' ? 'btn-primary' : 'btn-ghost']} href={SITE.signupUrl}>
+                            Prova gratis {PRICING.trialDays} giorni
+                        </a>
+                    </li>
+                ))}
+            </ul>
+
+            <div class="always">
+                <h3>In tutti i piani</h3>
+                <ul class="checks columns" role="list">
+                    {always.map(item => <li><DecoIcon name="mdi-check" size={20} /> {item}</li>)}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="prova" aria-labelledby="prova-title">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">La prova gratuita</span>
+                <h2 id="prova-title">Dalla registrazione al primo abbonamento</h2>
+                <p>Tutto si fa da soli, dal telefono o dal computer: nessuna chiamata, nessun appuntamento.</p>
+            </div>
+            <ol class="steps" role="list">
+                {trial.map((step, index) => (
+                    <li class="step">
+                        <span class="step-number">{index + 1}</span>
+                        <h3>{step.title}</h3>
+                        <p>{step.text}</p>
+                    </li>
+                ))}
+            </ol>
+        </div>
+    </section>
+
+    <section class="section faq-section" aria-labelledby="faq-title">
+        <div class="container narrow">
+            <div class="section-head">
+                <span class="eyebrow">Pagamenti, fatture e disdetta</span>
+                <h2 id="faq-title">Domande frequenti</h2>
+            </div>
+            <div class="faq">
+                {faq.map(item => (
+                    <details>
+                        <summary>{item.q}</summary>
+                        <p>{item.a}</p>
+                    </details>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="section final-cta" aria-labelledby="inizia-title">
+        <div class="container final-inner">
+            <div class="rule" aria-hidden="true"><span></span></div>
+            <h2 id="inizia-title">Inizia stasera</h2>
+            <p>Registri il locale, disegni i tavoli, carichi il menu e inviti lo staff: alla prima serata sei già pronto.</p>
+            <a class="btn btn-primary" href={SITE.signupUrl}>Registra il tuo locale</a>
+            <p class="contact">
+                Hai una domanda? Scrivici a <a href={mailto}>{SITE.contactEmail}</a>.
+            </p>
+        </div>
+    </section>
+</Base>
+
+<style>
+    .intro {
+        text-align: center;
+        display: grid;
+        justify-items: center;
+    }
+
+    .lead {
+        font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+        color: var(--ink-soft);
+        max-width: 640px;
+    }
+
+    .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    /* ── Plans ──────────────────────────────────────────────────────── */
+    .plans-section {
+        background: var(--surface);
+        border-block: 1px solid var(--line);
+    }
+
+    .plans {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        gap: 20px;
+        max-width: 860px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    }
+
+    .plan {
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+        border: 1px solid var(--line);
+    }
+
+    .plan.featured {
+        border-color: var(--primary);
+        box-shadow: var(--elevation-4);
+    }
+
+    .plan h3 {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    .for {
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+    }
+
+    .price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin: 0;
+    }
+
+    .amount {
+        font-size: 2.6rem;
+        font-weight: 600;
+        line-height: 1;
+        color: var(--primary);
+    }
+
+    .per {
+        color: var(--ink-soft);
+    }
+
+    .yearly {
+        font-size: .9375rem;
+        color: var(--ink-soft);
+        margin: 6px 0 18px;
+    }
+
+    .checks {
+        list-style: none;
+        margin: 0 0 24px;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+    }
+
+    .checks li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .checks :global(svg) {
+        flex: none;
+        margin-top: 2px;
+        color: var(--secondary);
+    }
+
+    .plan .btn {
+        margin-top: auto;
+    }
+
+    .always {
+        max-width: 860px;
+        margin: 40px auto 0;
+    }
+
+    .always h3 {
+        margin-bottom: 16px;
+    }
+
+    .columns {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+        column-gap: 24px;
+        margin: 0;
+    }
+
+    /* ── Trial steps ────────────────────────────────────────────────── */
+    .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 28px;
+    }
+
+    @media (min-width: 600px) {
+        .steps {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        .steps {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .step {
+        padding-top: 20px;
+        border-top: 1px solid var(--line-strong);
+    }
+
+    .step p {
+        color: var(--ink-soft);
+        margin: 0;
+    }
+
+    .step-number {
+        display: inline-grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 12px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: var(--on-primary);
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    /* ── FAQ ────────────────────────────────────────────────────────── */
+    .faq-section {
+        background: var(--surface);
+        border-block: 1px solid var(--line);
+    }
+
+    .narrow {
+        max-width: 820px;
+    }
+
+    .faq details {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .faq details:first-child {
+        border-top: 1px solid var(--line);
+    }
+
+    .faq summary {
+        cursor: pointer;
+        padding: 18px 32px 18px 0;
+        font-weight: 500;
+        font-size: 1.0625rem;
+        list-style: none;
+        position: relative;
+    }
+
+    .faq summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq summary::after {
+        content: "+";
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+
+    .faq details[open] summary::after {
+        content: "−";
+    }
+
+    .faq p {
+        margin: 0 0 18px;
+        color: var(--ink-soft);
+    }
+
+    /* ── Final CTA ──────────────────────────────────────────────────── */
+    .final-inner {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .final-inner p {
+        color: var(--ink-soft);
+        max-width: 560px;
+    }
+
+    .contact {
+        margin-top: 20px;
+    }
+</style>

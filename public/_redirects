@@ -3,6 +3,10 @@
 # (verify on the preview first, README).
 # The site never uses these paths. /icon-192.png stays on the site: active push subscriptions point there.
 
+# The demo request form is gone: venues sign up by themselves (pricing and trial on /prezzi)
+/demo               /prezzi                                               301
+/demo/*             /prezzi                                               301
+
 /login              https://ludoproject.chicomanda.com/login              301
 /askreset           https://ludoproject.chicomanda.com/askreset           301
 /reset/*            https://ludoproject.chicomanda.com/reset/:splat       301

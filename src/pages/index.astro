@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro'
 import Logo from '../components/Logo.astro'
 import DecoIcon from '../components/DecoIcon.astro'
-import { SITE } from '../site'
+import { PRICING, SITE } from '../site'
 
 // Every function below exists in the app's code (chi-comanda). Deliberately NOT promised: fiscal receipts /
 // registratore telematico (not implemented), offline use (the service worker has no cache), the cocktail "premium"
@@ -46,7 +46,7 @@ const features = [
     {
         icon: 'mdi-shield-crown',
         title: 'Ruoli e personalizzazione',
-        text: 'Ognuno vede solo quello che gli serve. Ogni locale ha la sua installazione, con nome, logo e colori propri, e si installa come app sul telefono.',
+        text: 'Ognuno vede solo quello che gli serve. Ogni locale ha nome, logo e colori propri, e Chi Comanda si installa come app sul telefono.',
     },
 ] as const
 
@@ -107,9 +107,13 @@ const structuredData = [
                     tavoli per la cassa e mostra a ciascuno solo quello che gli serve.
                 </p>
                 <div class="cta-row">
-                    <a class="btn btn-primary" href="/demo">Richiedi una demo</a>
-                    <a class="btn btn-ghost" href="/accedi">Accedi al tuo locale</a>
+                    <a class="btn btn-primary" href={SITE.signupUrl}>Prova gratis {PRICING.trialDays} giorni</a>
+                    <a class="btn btn-ghost" href="/prezzi">Prezzi</a>
                 </div>
+                <p class="hero-note">
+                    Ti registri da solo e lo usi subito, senza carta di credito. Poi da {PRICING.plans[0].monthly} € al mese + IVA.
+                    Hai già un locale su Chi Comanda? <a href="/accedi">Accedi</a>.
+                </p>
             </div>
 
             <div class="hero-art" aria-hidden="true">
@@ -209,13 +213,27 @@ const structuredData = [
         </div>
     </section>
 
-    <section class="section final-cta" aria-labelledby="demo-title">
+    <section class="section final-cta" aria-labelledby="inizia-title">
         <div class="container final-inner">
             <Logo size={88} />
             <div class="rule" aria-hidden="true"><span></span></div>
-            <h2 id="demo-title">Vuoi vederlo all’opera?</h2>
-            <p>Ti mostriamo Chi Comanda sul tuo menu e sui tuoi tavoli, senza impegno.</p>
-            <a class="btn btn-primary" href="/demo">Richiedi una demo</a>
+            <h2 id="inizia-title">Provalo sul tuo locale</h2>
+            <p>
+                Registri il locale in due minuti e hai {PRICING.trialDays} giorni con tutte le funzioni, senza carta.
+                Una configurazione guidata ti porta fino alla prima serata.
+            </p>
+            <ol class="signup-steps" role="list">
+                <li><span>1</span> Nome del locale, il tuo nome, email e password (o Google)</li>
+                <li><span>2</span> Apri il link che ti arriva per email</li>
+                <li><span>3</span> Tavoli, menu e staff, passo per passo</li>
+            </ol>
+            <div class="cta-row centered">
+                <a class="btn btn-primary" href={SITE.signupUrl}>Registra il tuo locale</a>
+                <a class="btn btn-ghost" href="/prezzi">Prezzi e prova gratuita</a>
+            </div>
+            <p class="contact">
+                Hai una domanda? Scrivici a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+            </p>
         </div>
     </section>
 </Base>
@@ -513,6 +531,49 @@ const structuredData = [
 
     .final-inner p {
         color: var(--ink-soft);
-        max-width: 520px;
+        max-width: 560px;
+    }
+
+    .hero-note {
+        margin-top: 16px;
+        color: var(--ink-soft);
+        font-size: .9375rem;
+        max-width: 560px;
+    }
+
+    .signup-steps {
+        list-style: none;
+        margin: 8px 0 28px;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+        text-align: left;
+    }
+
+    .signup-steps li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .signup-steps span {
+        display: inline-grid;
+        place-items: center;
+        flex: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: var(--on-primary);
+        font-weight: 500;
+    }
+
+    .centered {
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .contact {
+        margin-top: 20px;
     }
 </style>

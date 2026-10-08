@@ -2,9 +2,10 @@
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import securityHeaders from './integrations/security-headers.mjs'
+import { SITE } from './src/site.ts'
 
 /** Pages that must not be in the sitemap. */
-const NOT_IN_SITEMAP = ['/demo/grazie', '/demo/errore', '/404']
+const NOT_IN_SITEMAP = ['/404']
 
 export default defineConfig({
     site: 'https://chicomanda.com',
@@ -14,6 +15,6 @@ export default defineConfig({
         sitemap({
             filter: page => !NOT_IN_SITEMAP.some(path => new URL(page).pathname.replace(/\/$/, '') === path),
         }),
-        securityHeaders(),
+        securityHeaders({ indexable: SITE.indexable }),
     ],
 })

@@ -11,7 +11,6 @@ import { fileURLToPath } from 'node:url'
  */
 
 const EXTERNAL_SCRIPTS = [
-    'https://challenges.cloudflare.com', // Turnstile (demo form)
     'https://static.cloudflareinsights.com', // Cloudflare Web Analytics
 ]
 
@@ -36,7 +35,7 @@ export function csp(hashes) {
         "font-src 'self'",
         // Accedi checks https://<slug>.chicomanda.com/api/health; Web Analytics sends its beacon
         "connect-src 'self' https://*.chicomanda.com https://cloudflareinsights.com",
-        'frame-src https://challenges.cloudflare.com',
+        "frame-src 'none'",
         "form-action 'self'",
         "base-uri 'self'",
         "object-src 'none'",
@@ -45,8 +44,12 @@ export function csp(hashes) {
     ].join('; ')
 }
 
-/** @returns {import('astro').AstroIntegration} */
-export default function securityHeaders() {
+/**
+ * @param {{ indexable: boolean }} options  `indexable` false: every response (pages, images, files) carries
+ *   `X-Robots-Tag: noindex`, besides the pages' robots meta tag
+ * @returns {import('astro').AstroIntegration}
+ */
+export default function securityHeaders({ indexable }) {
     return {
         name: 'security-headers',
         hooks: {
@@ -70,7 +73,7 @@ export default function securityHeaders() {
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
-
+${indexable ? '' : '  X-Robots-Tag: noindex, nofollow\n'}
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 

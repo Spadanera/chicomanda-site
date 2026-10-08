@@ -3,9 +3,6 @@
  * `npm run todo` lists every occurrence in the repository.
  */
 
-/** Cloudflare's Turnstile test site key: always passes, pairs with the test secret in .dev.vars.example. */
-const TURNSTILE_TEST_SITE_KEY = '1x00000000000000000000AA'
-
 export const SITE = {
     name: 'Chi Comanda',
     url: 'https://chicomanda.com',
@@ -13,21 +10,58 @@ export const SITE = {
     description:
         'Chi Comanda è l’app per gestire le comande di bar, cocktail bar e locali con tavoli: ordini dal telefono, bar e cucina, cassa e mappa dei tavoli in tempo reale.',
     /**
-     * false while the site lives on the previews (pages.dev, vetrina.chicomanda.com): every page gets noindex.
-     * Set to true only at the cutover to chicomanda.com (README, "Cutover to chicomanda.com").
+     * false: search engines are kept out, every page gets a noindex robots tag and every response
+     * `X-Robots-Tag: noindex, nofollow` (_headers). Kept false on chicomanda.com too, by choice (8 October 2026: the
+     * site is live but not promoted); set to true to be found on Google.
      */
     indexable: false,
     /** Public contact address, forwarded by Cloudflare Email Routing. */
     contactEmail: 'info@chicomanda.com',
-    /**
-     * Cloudflare Turnstile site key (public), widget for chicomanda.com, vetrina.chicomanda.com and
-     * chicomanda-site.pages.dev. It doesn't work on localhost, so `astro dev` and `npm run dev:functions`
-     * use Cloudflare's test key (always passes), or PUBLIC_TURNSTILE_SITE_KEY when set.
-     */
-    turnstileSiteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY
-        || (import.meta.env.DEV ? TURNSTILE_TEST_SITE_KEY : '0x4AAAAAAFMv-lvsQ_zc3Mb7'),
     /** Venues' installations live at <slug>.<appDomain>. */
     appDomain: 'chicomanda.com',
+    /** Sign-up page of the shared installation (chi-comanda docs/saas.md): the venue and its admin are created there. */
+    signupUrl: 'https://app.chicomanda.com/registrati',
+} as const
+
+/**
+ * Trial and plans, as the app applies them (chi-comanda docs/saas.md, *Plans* and *Lifecycle*; guide
+ * amministratore/abbonamento.md). Prices are Stripe's (scripts/stripe-setup.mjs): change them here too when they change.
+ */
+export const PRICING = {
+    trialDays: 30,
+    graceDays: 14,
+    /** Suspended → subscription closed, then closed → data deleted. */
+    readOnlyDays: 90,
+    deletionDays: 90,
+    /** Euro a month, VAT excluded; the yearly price is `yearlyMonths` months. */
+    yearlyMonths: 10,
+    plans: [
+        {
+            id: 'base',
+            name: 'Base',
+            monthly: 29,
+            for: 'Bar, pub e cocktail bar',
+            features: [
+                'Ordini al tavolo, bar, cucina e cassa',
+                'Pagamenti con carta, SumUp e Satispay',
+                'Notifiche push e messaggi allo staff',
+                'Consumazione minima al tavolo',
+                'Menu pubblico con QR code',
+                'Accesso con Google',
+            ],
+        },
+        {
+            id: 'pro',
+            name: 'Pro',
+            monthly: 49,
+            for: 'Locali con cucina e una squadra da organizzare',
+            features: [
+                'Tutto quello che c’è in Base',
+                'Uscite (portate) per la cucina',
+                'Report del personale',
+            ],
+        },
+    ],
 } as const
 
 /**
@@ -43,5 +77,6 @@ export const NAV = [
     { href: '/#funzioni', label: 'Funzioni' },
     { href: '/#come-funziona', label: 'Come funziona' },
     { href: '/#per-chi', label: 'Per chi è' },
+    { href: '/prezzi', label: 'Prezzi' },
     { href: '/guida', label: 'Guida' },
 ] as const

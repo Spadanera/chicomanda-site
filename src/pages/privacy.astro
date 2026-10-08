@@ -2,11 +2,11 @@
 import Base from '../layouts/Base.astro'
 import { OWNER, SITE } from '../site'
 
-const updated = '3 ottobre 2026'
+const updated = '8 ottobre 2026'
 ---
 <Base
     title="Privacy"
-    description="Informativa sul trattamento dei dati personali del sito chicomanda.com: modulo di contatto, statistiche senza cookie, memoria locale del browser."
+    description="Informativa sul trattamento dei dati personali del sito chicomanda.com: email di contatto, statistiche senza cookie, memoria locale del browser."
 >
     <article class="section container prose">
         <span class="eyebrow">Informativa privacy</span>
@@ -14,8 +14,9 @@ const updated = '3 ottobre 2026'
         <p>
             Questa informativa, resa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR), riguarda
             il sito <strong>chicomanda.com</strong>. Non riguarda le app dei singoli locali
-            (<em>nome-del-locale</em>.chicomanda.com), i cui dati sono trattati da ciascun locale secondo la propria
-            informativa. Ultimo aggiornamento: {updated}.
+            (<em>nome-del-locale</em>.chicomanda.com) né la registrazione di un locale e il suo abbonamento
+            (app.chicomanda.com), che hanno le loro condizioni e la loro informativa, mostrate al momento della
+            registrazione. Ultimo aggiornamento: {updated}.
         </p>
 
         <h2>Titolare del trattamento</h2>
@@ -27,37 +28,26 @@ const updated = '3 ottobre 2026'
             Email: <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>
         </p>
 
-        <h2>Richieste di demo e di contatto</h2>
+        <h2>Email di contatto</h2>
         <p>
-            Se compili il modulo nella pagina <a href="/demo">Richiedi una demo</a> trattiamo i dati che inserisci:
-            nome, nome del locale, email, telefono (facoltativo) e messaggio, insieme alla data dell’invio e al
-            Paese di provenienza della connessione.
+            Se ci scrivi a <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> trattiamo i dati che ci mandi
+            (il tuo indirizzo email, il nome e quello che scrivi) solo per risponderti.
         </p>
         <ul>
-            <li><strong>Finalità</strong>: rispondere alla tua richiesta, organizzare la demo, inviarti le informazioni che chiedi.</li>
             <li>
                 <strong>Base giuridica</strong>: l’esecuzione di misure precontrattuali adottate su tua richiesta
-                (art. 6.1.b GDPR). Il conferimento è facoltativo, ma senza i dati obbligatori non possiamo risponderti.
+                (art. 6.1.b GDPR), o il nostro legittimo interesse a rispondere alle domande che riceviamo (art. 6.1.f GDPR).
             </li>
             <li>
-                <strong>Come</strong>: il modulo non salva nulla su un database. La richiesta ci arriva come email,
-                inviata tramite Mailjet, e resta nella nostra casella di posta.
+                <strong>Come</strong>: l’indirizzo è inoltrato da Cloudflare Email Routing alla nostra casella di posta,
+                dove il messaggio resta.
             </li>
             <li>
                 <strong>Conservazione</strong>: per il tempo necessario a gestire la richiesta e, se non diventi
-                cliente, non oltre 12 mesi
-                dall’ultimo contatto.
+                cliente, non oltre 12 mesi dall’ultimo contatto.
             </li>
             <li>Non usiamo questi dati per newsletter o marketing senza un tuo consenso separato.</li>
         </ul>
-
-        <h2>Protezione dallo spam</h2>
-        <p>
-            Il modulo usa Cloudflare Turnstile per distinguere le persone dai programmi automatici. Turnstile
-            analizza alcuni segnali tecnici del browser e della connessione solo per questa verifica e non usa
-            cookie di profilazione. La base giuridica è il nostro legittimo interesse a proteggere il sito dagli
-            abusi (art. 6.1.f GDPR).
-        </p>
 
         <h2>Dati di navigazione e statistiche</h2>
         <p>
@@ -92,8 +82,7 @@ const updated = '3 ottobre 2026'
         <h2>A chi comunichiamo i dati</h2>
         <p>I dati sono trattati da noi e, per nostro conto, dai fornitori nominati responsabili del trattamento:</p>
         <ul>
-            <li><strong>Cloudflare, Inc.</strong>: hosting del sito, Turnstile, Web Analytics;</li>
-            <li><strong>Mailjet SAS</strong> (gruppo Sinch): invio delle email del modulo.</li>
+            <li><strong>Cloudflare, Inc.</strong>: hosting del sito, Web Analytics, inoltro delle email di contatto.</li>
         </ul>
         <p>
             Cloudflare può trattare dati negli Stati Uniti: il trasferimento avviene sulla base dell’EU-US Data
