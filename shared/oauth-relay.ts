@@ -8,7 +8,7 @@
  * `<slug>.chicomanda.com` with a valid slug, or a host listed in OAUTH_EXTRA_HOSTS (clients on their own domain, the
  * stage on Railway). The code is useless without the Google client secret, which only the installations hold.
  */
-import { slugProblem } from './slug.ts'
+import { SHARED_SLUG, slugProblem } from './slug.ts'
 
 export const CALLBACK_PATH = '/api/auth/google/callback'
 
@@ -24,12 +24,12 @@ export function stateHost(state: string | null): string | undefined {
     }
 }
 
-/** An installation's host: `<slug>.<appDomain>` with a valid client slug, or one of `extraHosts`. */
+/** An installation's host: `<slug>.<appDomain>` with a valid client slug, the shared installation, or one of `extraHosts`. */
 export function isInstallationHost(host: string, extraHosts: string[], appDomain = 'chicomanda.com'): boolean {
     if (extraHosts.includes(host)) return true
     if (!host.endsWith(`.${appDomain}`)) return false
     const slug = host.slice(0, -appDomain.length - 1)
-    return !slug.includes('.') && slugProblem(slug) === null
+    return slug === SHARED_SLUG || (!slug.includes('.') && slugProblem(slug) === null)
 }
 
 export function parseExtraHosts(value: string | undefined): string[] {

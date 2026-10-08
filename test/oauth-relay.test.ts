@@ -20,8 +20,15 @@ test('forwards only to an installation', () => {
         'a.b.chicomanda.com', 'evilchicomanda.com', 'ludoproject.chicomanda.com.evil.example', '-x.chicomanda.com', 42]) {
         assert.equal(relay(`state=${state(host)}&code=x`), undefined, String(host))
     }
+    for (const host of ['api.chicomanda.com', 'admin.chicomanda.com', 'stage.chicomanda.com']) {
+        assert.equal(relay(`state=${state(host)}&code=x`), undefined, host)
+    }
     assert.equal(relay('code=x'), undefined)
     assert.equal(relay('state=not-base64!!&code=x'), undefined)
+})
+
+test('forwards to the shared installation, app.chicomanda.com (a reserved slug)', () => {
+    assert.ok(relay(`state=${state('app.chicomanda.com')}&code=x`)?.startsWith('https://app.chicomanda.com/api/auth/google/callback?'))
 })
 
 test('accepts the hosts listed in OAUTH_EXTRA_HOSTS (the stage, clients on their own domain)', () => {

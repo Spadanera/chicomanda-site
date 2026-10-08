@@ -10,6 +10,12 @@ export const RESERVED_SLUGS = ['www', 'mail', 'api', 'app', 'admin', 'staging', 
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,28}[a-z0-9])$/
 
 /**
+ * The shared installation of the venues that sign up by themselves (app.chicomanda.com, chi-comanda docs/saas.md): a
+ * reserved slug, never a client's, but an installation all the same (the Google login relay forwards to it).
+ */
+export const SHARED_SLUG = 'app'
+
+/**
  * What a person types → a candidate slug: "Bagno Al Mare" → "bagno-al-mare", "Caffè" → "caffe".
  * An address of the installation is accepted too: "libra.chicomanda.com/login" → "libra".
  */
