@@ -46,6 +46,28 @@ Per tornare al logo di Chi Comanda tocca **Usa il logo predefinito**.
 Sui telefoni dove l'app è già installata, la nuova icona può metterci un po' a comparire. Se non cambia, togli l'app
 dalla schermata Home e aggiungila di nuovo.
 
+### Dati del locale
+
+**Prepara l'archivio** prepara un file .zip con tutti i dati del locale: lo staff e i ruoli, i menu (nello stesso
+formato dell'[import del menu](/guida/amministratore/menu-csv)), le serate, ogni prodotto ordinato con tavolo, ora, prezzo e chi l'ha
+ordinato, i pagamenti, il registro attività, il logo e il menu in PDF. I file .csv si aprono con Excel; la cartella
+`dati` contiene gli stessi dati per un programma. Il file LEGGIMI.txt spiega cosa c'è in ogni file.
+
+L'archivio è pronto di solito in pochi minuti: arriva un'e-mail e compare **Scarica** nell'elenco. Resta da scaricare
+per 7 giorni. Le chiavi dei pagamenti elettronici (SumUp, Satispay) non ci sono mai.
+
+### Eliminare il locale
+
+In **Dati del locale**, **Elimina il locale**: scrivi il nome del locale e conferma. Da quel momento:
+
+- lo staff non può più entrare nel locale; tu e gli altri amministratori sì;
+- arriva un'e-mail a tutti gli amministratori con la data dell'eliminazione, fra **30 giorni**;
+- fino a quella data puoi scaricare l'archivio dei dati o toccare **Annulla l'eliminazione**: tutto torna com'era.
+
+Alla data, tutti i dati del locale (menu, serate, ordini, pagamenti, registro, logo) vengono cancellati per sempre.
+Le persone che lavoravano solo nel tuo locale perdono anche l'account. Le copie di sicurezza che li contengono vengono
+cancellate entro altri 30 giorni.
+
 ## Pagamenti
 
 > **Funzione opzionale** · La sezione **Pagamenti** c'è solo se il locale ha i pagamenti attivi. Senza, la cassa

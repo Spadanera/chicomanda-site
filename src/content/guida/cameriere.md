@@ -10,9 +10,13 @@ avvisa l'amministratore.
 <img src="/guida/img/cameriere-mappa-occupata.png" alt="Piantina della sala con i tavoli" width="280">
 
 - In alto ci sono le **sale** (per esempio **SALA**, **DEHORS**): toccane una per vederla.
-- Il cursore con le lenti serve a ingrandire o rimpicciolire la piantina.
-- Ogni tavolo mostra il nome e i posti (es. *4p* = 4 posti).
-- I tavoli **con il bordo colorato** sono già aperti: hanno almeno un ordine.
+- La sala si apre già adattata allo schermo. I pulsanti in alto a destra la **ingrandiscono** (lente con +), la
+  **rimpiccioliscono** (lente con −) e la **adattano allo schermo** (il riquadro); in mezzo c'è lo zoom attuale. Lo
+  zoom che scegli resta su quel telefono.
+- Ogni tavolo è disegnato con le sue sedie e mostra il nome e i posti (es. *4 posti*); sui tavoli piccoli solo il nome.
+- I tavoli **colorati**, con il bordo e le sedie del colore del locale, sono già aperti: hanno almeno un ordine.
+- Se il locale usa le uscite, un'etichetta sull'angolo del tavolo dice quale portata aspetta la cucina (es. *2ª in
+  attesa*).
 - La scheda **EXTRA** compare quando ci sono tavoli extra (vedi sotto).
 
 La piantina si aggiorna da sola quando un collega apre un tavolo («Tavoli aggiornati»).
@@ -154,8 +158,8 @@ resta com'è).
 2. Puoi:
    - **spostare** un tavolo trascinandolo con il dito;
    - **aggiungere** un tavolo con **+ TAVOLO** in basso a destra;
-   - **modificare** un tavolo toccandolo: **Etichetta** (il nome), **Posti**, misure e **Forma**, poi **OK**.
-     Cambiando l'etichetta di un tavolo già aperto cambia anche il nome del suo conto.
+   - **modificare** un tavolo toccandolo (vedi [I tavoli](/guida/amministratore/locale#i-tavoli)), poi **Salva**.
+     Cambiando il nome di un tavolo già aperto cambia anche il nome del suo conto.
 3. Tocca **Salva** in alto. Con **Annulla** torni alla piantina di prima.
 
 Un tavolo già aperto non si può eliminare.

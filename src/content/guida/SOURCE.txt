@@ -1,1 +1,1 @@
-Copied from chi-comanda docs/guida at aa1bdc9 2026-10-08 by npm run guida:sync. Do not edit.
+Copied from chi-comanda docs/guida at 008396b 2026-10-09 by npm run guida:sync. Do not edit.

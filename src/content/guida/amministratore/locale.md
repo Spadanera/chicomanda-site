@@ -10,23 +10,31 @@ Qui disegni la piantina del locale, quella che i camerieri vedono a ogni serata.
 
 ### Le sale
 
-- **Nuova sala**: tocca **+ STANZA** in alto, scrivi **Nome Sala**, **Larghezza** e **Altezza** in metri e tocca
-  **Salva**.
+- **Nuova sala**: tocca **+ STANZA** in alto, scrivi il **Nome della sala**, la **Larghezza** e la **Profondità** in
+  metri (servono a disegnarla in scala) e tocca **Aggiungi**.
 - **Modificare una sala**: apri la sala e tocca la **matita** accanto alle schede.
 - **Eliminare una sala**: tocca il **cestino** accanto alle schede e conferma. Spariscono anche i suoi tavoli.
 
 ### I tavoli
 
 - **Nuovo tavolo**: apri la sala e tocca **+ TAVOLO** in basso a destra.
-- **Spostare**: trascina il tavolo con il dito o con il mouse.
-- **Modificare**: tocca il tavolo. In **Configura Tavolo** scegli **Etichetta** (il nome che vedono i camerieri),
-  **Posti**, **Larghezza** e **Altezza** in centimetri, **Forma** (*Rettangolare* o *Ovale*), poi **OK**.
+- **Spostare**: trascina il tavolo con il dito o con il mouse. Mentre sistemi la sala, un puntino ogni 50 cm aiuta
+  ad allineare i tavoli.
+- **Modificare**: tocca il tavolo. In cima vedi un'anteprima del tavolo con le sue sedie, che cambia mentre scrivi.
+  - **Nome o numero**: come lo chiamano i camerieri (12, Bancone, Divanetto…);
+  - **Forma**: *Rettangolo* o *Tondo*;
+  - **Misure comuni**: un tocco imposta misure e posti di un tavolo tipico (*Da 2*, *Da 4*, *Ø 90*…);
+  - **Posti** (con **−** e **+**), **Larghezza** e **Profondità** in centimetri.
+
+  Poi **Salva** (**Aggiungi** per un tavolo nuovo).
+
+  <img src="/guida/img/admin-tavolo-modifica.png" alt="Modifica di un tavolo, con l'anteprima" width="280">
 - **Eliminare**: tocca il tavolo e poi **Elimina**. Non c'è se il tavolo è in uso.
 
 **Importante**: le modifiche diventano definitive solo quando tocchi **Salva** in alto. Con **Annulla** torni alla
 piantina salvata.
 
-Per ingrandire o rimpicciolire usa il cursore con le lenti.
+Per ingrandire, rimpicciolire o adattare la sala allo schermo usa i pulsanti in alto a destra sulla piantina.
 
 Le modifiche fatte qui valgono dalla prossima serata. Durante una serata, camerieri e cassieri possono cambiare la
 piantina solo per quella sera da **Gestione Tavoli** (vedi [Cameriere](/guida/cameriere#gestione-tavoli)).

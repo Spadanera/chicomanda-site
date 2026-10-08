@@ -49,4 +49,6 @@ in quel caso togli i ruoli o rimuovila dal locale.
 ## Rimuovere una persona dal locale
 
 Tocca la persona, poi **ELIMINA** e conferma. La persona non lavora più nel tuo locale; se non lavora in nessun altro,
-il suo account viene cancellato.
+il suo account viene chiuso e non può più entrare. Per un anno il registro attività continua a mostrare il suo nome
+accanto a quello che ha fatto; poi il nome e l'e-mail vengono cancellati e al loro posto compare «Utente eliminato». Chi
+vuole cancellare subito i propri dati lo fa da sé, dal profilo ([Eliminare l'account](/guida/primi-passi#eliminare-laccount)).

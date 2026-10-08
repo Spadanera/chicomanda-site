@@ -23,6 +23,7 @@ sinistra.
 | **Utenti** | Inviti e ruoli dello staff | [Persone](/guida/amministratore/persone) |
 | **Report** | Incassi, prodotti, orari, sconti, personale e postazioni, per serata o per periodo | [Report](/guida/amministratore/report) |
 | **Registro** | Chi ha fatto cosa: ordini, cassa, menu, serate, staff, accessi | [Registro attività](/guida/amministratore/registro-attivita) |
+| **Abbonamento** | Solo per i locali registrati da soli: piano, prova, dati di fatturazione, pagamenti | [Abbonamento](/guida/amministratore/abbonamento) |
 
 ## Prima serata: da dove partire
 

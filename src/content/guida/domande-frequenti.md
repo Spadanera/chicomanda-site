@@ -61,9 +61,16 @@ Nella pagina di accesso tocca **Password dimenticata**. Vedi [Primi passi](/guid
 
 ### Leggo «Troppi tentativi di accesso: riprova tra … minuti»
 
-Dopo 5 accessi falliti di fila con la stessa e-mail l'app aspetta un po' prima di provare ancora (al massimo 15
-minuti): così nessuno può indovinare una password a forza di tentativi. Aspetta il tempo indicato e riprova con calma,
-oppure usa **Password dimenticata**. Un accesso riuscito azzera il conteggio.
+Dopo 5 accessi falliti con la stessa e-mail in un quarto d'ora l'app aspetta un po' prima di lasciarti provare
+ancora: così nessuno può indovinare una password a forza di tentativi. La prima volta l'attesa è di 15 minuti; se
+nella stessa giornata sbagli di nuovo cinque volte, l'attesa cresce (30 minuti, un'ora, fino a 4 ore). Aspetta il
+tempo indicato e riprova con calma, oppure usa **Password dimenticata**. Un accesso riuscito azzera il conteggio.
+
+### Leggo «Troppe richieste di reimpostazione della password»
+
+**Password dimenticata** manda un'e-mail a ogni richiesta: dopo 5 richieste in un'ora per la stessa e-mail l'app
+aspetta prima di mandarne altre. Controlla la posta (anche lo spam): il link dell'ultima e-mail arrivata funziona.
+Lo stesso messaggio compare se da un telefono si aprono molti link di reimpostazione non validi o scaduti.
 
 ### Il link dell'invito non funziona
 

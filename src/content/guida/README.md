@@ -9,6 +9,7 @@ Questa guida spiega come usarla, ruolo per ruolo.
 
 | Sei… | Leggi |
 |---|---|
+| Titolare di un locale nuovo | [Registrare il tuo locale](/guida/registrazione): registrazione e configurazione guidata |
 | Nuovo nello staff | [Primi passi](/guida/primi-passi): invito, accesso, scelta del locale, app sul telefono |
 | Cameriere | [Cameriere](/guida/cameriere) |
 | Barista o in cucina | [Barista e cucina](/guida/barista) |

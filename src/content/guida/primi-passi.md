@@ -92,6 +92,22 @@ Da **PROFILO** puoi:
 
 L'e-mail non si può cambiare da qui.
 
+### Scaricare i tuoi dati
+
+**SCARICA I TUOI DATI** scarica un archivio (.zip) con quello che Chi Comanda conserva su di te in tutti i locali: il
+tuo account, i locali e i ruoli, le serate in cui eri nello staff, gli ordini che hai preso e le attività del registro
+che ti riguardano. Dentro, il file LEGGIMI.txt spiega cosa c'è in ogni file; i file .csv si aprono con Excel.
+
+### Eliminare l'account
+
+In fondo al profilo, **ELIMINA L'ACCOUNT**: scrivi la tua password (se entri con Google, la tua e-mail) e conferma.
+È definitivo e vale per tutti i locali: il tuo nome, l'e-mail e la foto vengono cancellati e non puoi più entrare. Gli
+ordini che hai preso e i tavoli che hai aperto restano nei conti dei locali, a nome di «Utente eliminato». Per tornare a
+lavorare in un locale serve un nuovo invito.
+
+Se sei l'unico amministratore di un locale in cui lavorano altre persone, prima nomina un altro amministratore
+(**Amministrazione → Utenti**).
+
 ## Installare l'app sul telefono
 
 Chi Comanda non si scarica dagli store: si aggiunge alla schermata Home dal browser, e poi si apre come un'app,
